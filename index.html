@@ -414,9 +414,18 @@ function rW(){
   bx.innerHTML=h;
 }
 
-function tE(k,el){if(Z.ck[k]){delete Z.ck[k];el.classList.remove('on');}else{Z.ck[k]=1;el.classList.add('on');}sv();}
+// ═══ HAPTICS ═══
+function hap(style){
+  // iOS Safari haptic feedback
+  if(window.navigator&&navigator.vibrate){navigator.vibrate(style==='heavy'?20:style==='medium'?15:10);}
+  // Fallback: use AudioContext trick for iOS haptic engine
+  try{const ctx=new(window.AudioContext||window.webkitAudioContext)();const o=ctx.createOscillator();const g=ctx.createGain();o.connect(g);g.connect(ctx.destination);g.gain.value=0.001;o.frequency.value=1;o.start(0);o.stop(ctx.currentTime+0.01);setTimeout(()=>ctx.close(),100);}catch(e){}
+}
+
+function tE(k,el){hap('light');if(Z.ck[k]){delete Z.ck[k];el.classList.remove('on');}else{Z.ck[k]=1;el.classList.add('on');}sv();}
 function sWt(k,v){if(v)Z.wt[k]=v;else delete Z.wt[k];sv();}
 function adj(wk,def,delta){
+  hap('light');
   const cur=gWt(wk,def);
   const nv=Math.max(0,cur+delta);
   Z.wt[wk]=nv;sv();
@@ -424,6 +433,7 @@ function adj(wk,def,delta){
   if(el)el.textContent=nv+'lbs';
 }
 function adjR(rk,delta){
+  hap('light');
   const cur=Number(Z.wt[rk]||0);
   const nv=Math.max(0,cur+delta);
   Z.wt[rk]=nv;sv();
@@ -431,6 +441,7 @@ function adjR(rk,delta){
   if(el)el.textContent=nv;
 }
 function adjDur(dk,delta){
+  hap('light');
   const cur=Z.wt[dk]!=null?Number(Z.wt[dk]):20;
   const nv=Math.max(5,Math.min(60,cur+delta));
   Z.wt[dk]=nv;sv();
@@ -438,6 +449,7 @@ function adjDur(dk,delta){
   if(el)el.textContent=nv+'m';
 }
 function adjRep(rk,def,delta){
+  hap('light');
   const cur=Z.wt[rk]!=null?Number(Z.wt[rk]):def;
   const nv=Math.max(1,cur+delta);
   Z.wt[rk]=nv;sv();
@@ -458,12 +470,14 @@ function adjRep(rk,def,delta){
   }
 }
 function tD(k){
+  hap('heavy');
   const wasUndone=!!Z.dn[k];
   if(Z.dn[k])delete Z.dn[k];else Z.dn[k]=Date.now();
   sv();rS();rW();
   if(!wasUndone){celebrateDay();setTimeout(()=>{checkBadges();checkPRs(k);checkGraduation();},500);}
 }
 function makeup(missedKey,fridayKey){
+  hap('heavy');
   Z.dn[missedKey]=Date.now();
   Z.dn[fridayKey]=Date.now();
   sv();rS();rW();
