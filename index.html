@@ -193,25 +193,25 @@ body.light .cele-card{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 <script>
 const SC=[
   {d:'Sunday',t:'The Burner',b:'db-b',ex:[
-    {n:'KB Deadlifts',r:'15 reps',w:25},
-    {n:'Push-ups',r:'reps',w:0,rp:12},
-    {n:'KB Snatches',r:'8 reps / arm',w:25},
-    {n:'DB Thrusters',r:'12 reps',w:20}
+    {n:'KB Deadlifts',r:'15 reps',w:25,vid:'kettlebell+deadlift+form'},
+    {n:'Push-ups',r:'reps',w:0,rp:12,vid:'push+up+proper+form'},
+    {n:'KB Snatches',r:'8 reps / arm',w:25,vid:'kettlebell+snatch+tutorial'},
+    {n:'DB Thrusters',r:'12 reps',w:20,vid:'dumbbell+thruster+form'}
   ],f:'20m AMRAP',wk:'45 Min Incline Walk',hr:'Zone 2 – Low Zone 3'},
   {d:'Monday',t:'Walk',b:'db-w',ex:[],wk:'45 Min Incline Walk',hr:'Solid Zone 2'},
   {d:'Tuesday',t:'Strength',b:'db-s',ex:[
-    {n:'KB Goblet Squats',r:'12 reps',w:25},
-    {n:'DB Shoulder Press',r:'10 reps',w:20},
-    {n:'KB Swings',r:'20 reps',w:25},
-    {n:'DB Renegade Rows',r:'10 / side',w:20},
-    {n:'Plank',r:'sec',w:0,rp:60,rpUnit:'sec',rpStep:10}
+    {n:'KB Goblet Squats',r:'12 reps',w:25,vid:'kettlebell+goblet+squat+form'},
+    {n:'DB Shoulder Press',r:'10 reps',w:20,vid:'dumbbell+shoulder+press+form'},
+    {n:'KB Swings',r:'20 reps',w:25,vid:'kettlebell+swing+form'},
+    {n:'DB Renegade Rows',r:'10 / side',w:20,vid:'dumbbell+renegade+row+form'},
+    {n:'Plank',r:'sec',w:0,rp:60,rpUnit:'sec',rpStep:10,vid:'plank+proper+form'}
   ],f:'4 Rounds'},
   {d:'Wednesday',t:'Walk',b:'db-w',ex:[],wk:'30–45 Min Light Walk',hr:'Zone 1 – Low Zone 2'},
   {d:'Thursday',t:'Unilateral',b:'db-u',ex:[
-    {n:'Step-Ups',r:'10 / leg',w:20},
-    {n:'KB Row',r:'10 / arm',w:25},
-    {n:'DB Curl to Press',r:'10 reps',w:15},
-    {n:'Russian Twists',r:'20 reps',w:10}
+    {n:'Step-Ups',r:'10 / leg',w:20,vid:'dumbbell+step+up+form'},
+    {n:'KB Row',r:'10 / arm',w:25,vid:'kettlebell+row+form'},
+    {n:'DB Curl to Press',r:'10 reps',w:15,vid:'dumbbell+curl+to+press+form'},
+    {n:'Russian Twists',r:'20 reps',w:10,vid:'russian+twist+form'}
   ],f:'20m EMOM (rotate each min)'},
   {d:'Friday',t:'REST',b:'db-r',ex:[]},
   {d:'Saturday',t:'Walk',b:'db-w',ex:[],wk:'60 Min Incline Walk',hr:'High Zone 2'}
@@ -403,7 +403,7 @@ function rW(){
         const rpUnit=e.rpUnit||'reps';
         const rpStep=e.rpStep||1;
         const rpDisp=rpUnit==='sec'?(repVal>=60?Math.floor(repVal/60)+'m '+((repVal%60)?repVal%60+'s':''):repVal+'s'):repVal+' '+rpUnit;
-        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}</div><div class="ep">${e.rp?rpDisp:e.r}</div></div>${e.w?`<div class="ws"><div class="wb" onclick="adj('${wk}',${e.w},-5)">−</div><div class="wv" id="${wk}">${cur}lbs</div><div class="wb" onclick="adj('${wk}',${e.w},5)">+</div></div>`:''}${e.rp?`<div class="ws"><div class="wb" onclick="adjRep('${rk}',${e.rp},-${rpStep})">−</div><div class="wv" id="${rk}">${repVal}</div><div class="wb" onclick="adjRep('${rk}',${e.rp},${rpStep})">+</div></div>`:''}</div>`;
+        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle">▶️</a>`:''}</div><div class="ep">${e.rp?rpDisp:e.r}</div></div>${e.w?`<div class="ws"><div class="wb" onclick="adj('${wk}',${e.w},-5)">−</div><div class="wv" id="${wk}">${cur}lbs</div><div class="wb" onclick="adj('${wk}',${e.w},5)">+</div></div>`:''}${e.rp?`<div class="ws"><div class="wb" onclick="adjRep('${rk}',${e.rp},-${rpStep})">−</div><div class="wv" id="${rk}">${repVal}</div><div class="wb" onclick="adjRep('${rk}',${e.rp},${rpStep})">+</div></div>`:''}</div>`;
       });
       if(c.wk){const wk=k+'_walk',wc=!!Z.ck[wk];
         h+=`<div class="er"><div class="ck${wc?' on':''}" onclick="tE('${wk}',this)"></div><div class="ei"><div class="en">🚶 ${c.wk}</div>${c.hr?`<div class="ep">❤️ ${c.hr}</div>`:''}</div></div>`;}

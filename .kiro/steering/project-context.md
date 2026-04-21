@@ -73,12 +73,15 @@ Weeks 2,4,6,8,10,12,14,16,18,20,22,24 each have a specific progression note disp
 first_blood, week1, streak3, streak7, streak14, streak30, ten_done, twentyfive, fifty, hundred, month1, month3, month6, sunday_5, tuesday_5, walk_10, weight_up, early_bird, weekend_warrior, perfect_week
 
 ## Known Issues / Notes
-- Git not yet confirmed working on user's machine (winget install ran but may need PATH refresh or restart)
+- Git is installed and authenticated — pushes work from workspace via `git push origin main`
 - Start date auto-adjusts to nearest Sunday (week always starts Sunday)
 - The date picker was changed from hidden input to visible `<input type="date">` for iOS Safari compatibility
+- Body weight input: the toggle click is on `.bw-top` only, not the whole `.bw-bar`, so the input field can receive focus on iOS. The input row has `event.stopPropagation()` to prevent collapsing.
 - localStorage key is `wt_v3` — earlier versions (`workout_tracker_v1`, `wt_v2`) are abandoned
 - Body weight chart uses canvas with devicePixelRatio scaling for retina displays
 - `drawBWChart` uses hardcoded color `#4a9eff` instead of CSS variable (canvas limitation)
+- Haptic feedback added to all interactive elements (light tap for steppers/checkboxes, heavy tap for day complete/makeup). Uses Vibration API + AudioContext fallback, but iOS Safari support is limited.
+- iOS Safari quirks: hidden date inputs don't trigger picker, parent onclick handlers steal focus from child inputs
 
 ## Files
 - `index.html` — The entire app (~750 lines)
