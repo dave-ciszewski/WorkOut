@@ -256,9 +256,9 @@ function rBW(){
     else if(diff>0){delta='+'+diff.toFixed(1)+'lbs';deltaCls='up';}
     else{delta='±0';deltaCls='flat';}
   }
-  let h=`<div class="bw-bar" onclick="toggleBW()"><div class="bw-top"><div><div class="bw-label">Current Weight</div><div><span class="bw-val">${latest?latest+'lbs':'— lbs'}</span>${delta?`<span class="bw-delta ${deltaCls}">${delta}</span>`:''}</div></div><div style="font-size:1.2rem;color:var(--muted)">${bwOpen?'▲':'▼'}</div></div>`;
+  let h=`<div class="bw-bar"><div class="bw-top" onclick="toggleBW()" style="cursor:pointer"><div><div class="bw-label">Current Weight</div><div><span class="bw-val">${latest?latest+'lbs':'— lbs'}</span>${delta?`<span class="bw-delta ${deltaCls}">${delta}</span>`:''}</div></div><div style="font-size:1.2rem;color:var(--muted)">${bwOpen?'▲':'▼'}</div></div>`;
   if(bwOpen){
-    h+=`<div class="bw-input-row"><input class="bw-inp" id="bw-inp" type="number" inputmode="decimal" placeholder="Enter weight" value="${todayVal}" onfocus="this.select()"><button class="bw-save" onclick="event.stopPropagation();saveBW()">Log</button></div>`;
+    h+=`<div class="bw-input-row" onclick="event.stopPropagation()"><input class="bw-inp" id="bw-inp" type="number" inputmode="decimal" placeholder="Enter weight" value="${todayVal}" onfocus="this.select()"><button class="bw-save" onclick="event.stopPropagation();saveBW()">Log</button></div>`;
     if(entries.length>=2){
       h+=`<div class="bw-chart"><canvas id="bw-canvas"></canvas></div>`;
       h+=`<div class="bw-range"><span>${entries.length>0?fd(new Date(entries[0]+'T00:00:00')):''}</span><span>${entries.length>0?fd(new Date(entries[entries.length-1]+'T00:00:00')):''}</span></div>`;
