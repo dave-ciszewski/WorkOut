@@ -37,6 +37,19 @@ h1{font-size:1.5rem;text-align:center;margin:8px 0 4px}
 .bw-inp:focus{outline:none;border-color:var(--accent)}
 .bw-save{background:var(--accent);color:#000;border:none;padding:10px 18px;border-radius:8px;font-size:.9rem;font-weight:700;cursor:pointer}
 
+.bw-goals{margin-top:12px}
+.bw-goal{background:var(--card2);border-radius:10px;padding:10px 12px;margin-bottom:8px}
+.bw-goal-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}
+.bw-goal-lbl{font-size:.8rem;font-weight:600}
+.bw-goal-date{font-size:.7rem;color:var(--muted)}
+.bw-goal-bar{height:8px;background:var(--border);border-radius:4px;overflow:hidden}
+.bw-goal-fill{height:100%;border-radius:4px;transition:width .5s}
+.bw-goal-fill.on-track{background:var(--green)}
+.bw-goal-fill.behind{background:var(--orange)}
+.bw-goal-fill.done{background:var(--green)}
+.bw-goal-info{display:flex;justify-content:space-between;margin-top:4px;font-size:.7rem;color:var(--muted)}
+.bw-goal-hit{color:var(--green);font-weight:700;font-size:.8rem;text-align:center;padding:4px 0}
+
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:18px}
 .stat{background:var(--card);border-radius:14px;padding:12px 6px;text-align:center}
 .sv{font-size:1.5rem;font-weight:800}.sv.ss{color:var(--orange)}.sv.sd{color:var(--green)}.sv.sw{color:var(--accent)}.sv.sb{color:var(--red)}
@@ -219,7 +232,7 @@ const SC=[
 const PG={2:"Complete Tuesday's circuit with zero extra rest.",4:"Complete Sunday's 45min walk without slowing after lifting.",6:"Rep Jump: +2 reps to every lifting set.",8:"Density: Reduce Tuesday rest from 60s to 40s.",10:"Strength: Increase KB weight 5–10lbs for Sunday Deadlifts.",12:"Elevation: Increase Step-Up height (higher box).",14:"AMRAP Goal: Beat Week 6 round count by 2 full rounds.",16:"Rucking: Add 10lb pack/vest to Sunday & Saturday walks.",18:"Iso-Hold: 2s pause at bottom of every Squat & Step-Up.",20:"Tempo: 4s descent on every press and row.",22:"Power: Tuesday KB Swings → Single-Arm Swings (10/arm).",24:"Final Test: Sunday AMRAP to 30 mins + 45 min Weighted Walk."};
 const TD=182,LK='wt_v3';
 let Z=ld(),vw=gw();
-function mk(){return{s:null,dn:{},ck:{},wt:{},bw:{},badges:{},bestStreak:0};}
+function mk(){return{s:null,dn:{},ck:{},wt:{},bw:{},badges:{},bestStreak:0,goals:[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}]};}
 function ld(){try{return JSON.parse(localStorage.getItem(LK))||mk();}catch(e){return mk();}}
 function sv(){localStorage.setItem(LK,JSON.stringify(Z));}
 function sd(){return Z.s?new Date(Z.s+'T00:00:00'):null;}
@@ -259,6 +272,34 @@ function rBW(){
   let h=`<div class="bw-bar"><div class="bw-top" onclick="toggleBW()" style="cursor:pointer"><div><div class="bw-label">Current Weight</div><div><span class="bw-val">${latest?latest+'lbs':'— lbs'}</span>${delta?`<span class="bw-delta ${deltaCls}">${delta}</span>`:''}</div></div><div style="font-size:1.2rem;color:var(--muted)">${bwOpen?'▲':'▼'}</div></div>`;
   if(bwOpen){
     h+=`<div class="bw-input-row" onclick="event.stopPropagation()"><input class="bw-inp" id="bw-inp" type="number" inputmode="decimal" placeholder="Enter weight" value="${todayVal}" onfocus="this.select()"><button class="bw-save" onclick="event.stopPropagation();saveBW()">Log</button></div>`;
+    // Goal weight display
+    if(Z.goals&&Z.goals.length&&latest){
+      h+=`<div class="bw-goals">`;
+      Z.goals.forEach((g,gi)=>{
+        const target=g.lbs;
+        const byDate=new Date(g.by+'T00:00:00');
+        const byLabel=byDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+        const diff=latest-target;
+        const hit=latest<=target;
+        const daysLeft=Math.max(0,Math.ceil((byDate-td())/864e5));
+        // Progress: from first weight to target
+        const startW=first||latest;
+        const totalToLose=startW-target;
+        const lost=startW-latest;
+        const pctDone=totalToLose>0?Math.min(100,Math.max(0,Math.round(lost/totalToLose*100))):0;
+        const pastDue=td()>byDate;
+        h+=`<div class="bw-goal">`;
+        if(hit){
+          h+=`<div class="bw-goal-hit">✅ Goal ${target}lbs reached!</div>`;
+        } else {
+          h+=`<div class="bw-goal-top"><span class="bw-goal-lbl">🎯 Goal: ${target}lbs</span><span class="bw-goal-date">${pastDue?'Past due':daysLeft+' days left'} · ${byLabel}</span></div>`;
+          h+=`<div class="bw-goal-bar"><div class="bw-goal-fill ${pastDue?'behind':'on-track'}" style="width:${pctDone}%"></div></div>`;
+          h+=`<div class="bw-goal-info"><span>${pctDone}% there</span><span>${diff.toFixed(1)}lbs to go</span></div>`;
+        }
+        h+=`</div>`;
+      });
+      h+=`</div>`;
+    }
     if(entries.length>=2){
       h+=`<div class="bw-chart"><canvas id="bw-canvas"></canvas></div>`;
       h+=`<div class="bw-range"><span>${entries.length>0?fd(new Date(entries[0]+'T00:00:00')):''}</span><span>${entries.length>0?fd(new Date(entries[entries.length-1]+'T00:00:00')):''}</span></div>`;
@@ -507,10 +548,32 @@ function rC(){
 function rSt(){
   const s=sd();
   const curVal=Z.s||dk(td());
+  if(!Z.goals)Z.goals=[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}];
+  let goalHTML='';
+  Z.goals.forEach((g,i)=>{
+    goalHTML+=`<div class="sr" style="flex-wrap:wrap;gap:8px"><span class="sbl">Goal ${i+1}</span><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><input type="number" id="goal-lbs-${i}" value="${g.lbs}" inputmode="decimal" style="width:70px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;font-size:.9rem;text-align:center" placeholder="lbs"><span style="color:var(--muted);font-size:.85rem">lbs by</span><input type="date" id="goal-by-${i}" value="${g.by}" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;font-size:.9rem;-webkit-appearance:none;appearance:none"><button class="sbt" onclick="saveGoal(${i})">Set</button></div></div>`;
+  });
+  goalHTML+=`<div class="sr"><span class="sbl">Add Goal</span><button class="sbt" onclick="addGoal()">+ New Goal</button></div>`;
   document.getElementById('set').innerHTML=`<div style="margin-top:18px">`+
     `<div class="sr" style="flex-wrap:wrap;gap:10px"><span class="sbl">Start Date</span><div style="display:flex;gap:8px;align-items:center"><input type="date" id="date-pick" value="${curVal}" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:10px 12px;font-size:1rem;-webkit-appearance:none;appearance:none;min-width:150px"><button class="sbt" onclick="applyDate()">Set</button></div></div>`+
+    goalHTML+
     `<div class="sr"><span class="sbl">Export Data</span><button class="sbt" onclick="xD()">Download JSON</button></div>`+
     `<div class="sr"><span class="sbl">Reset All Data</span><button class="sbt dg" onclick="rD()">Reset</button></div></div>`;
+}
+
+function saveGoal(i){
+  const lbs=document.getElementById('goal-lbs-'+i);
+  const by=document.getElementById('goal-by-'+i);
+  if(lbs&&by&&lbs.value&&by.value){
+    if(!Z.goals)Z.goals=[];
+    Z.goals[i]={lbs:Number(lbs.value),by:by.value};
+    sv();renderAll();
+  }
+}
+function addGoal(){
+  if(!Z.goals)Z.goals=[];
+  Z.goals.push({lbs:170,by:'2027-01-01'});
+  sv();rSt();
 }
 
 function applyDate(){
@@ -857,6 +920,7 @@ function renderAll(){rBW();rS();rW();rSt();rB();}
 if(!Z.badges)Z.badges={};
 if(!Z.bw)Z.bw={};
 if(!Z.bestStreak)Z.bestStreak=0;
+if(!Z.goals)Z.goals=[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}];
 renderAll();
 setTimeout(checkGraduation,1000);
 </script>
