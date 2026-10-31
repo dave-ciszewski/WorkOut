@@ -285,12 +285,12 @@ const R4='<b>The Rule of 4:</b> You only advance weights or volume when you can 
 const R2='<b>Two in a row:</b> Hit the phase target in 2 sessions in a row and the app will offer to move you to the next phase. A missed target resets the count.';
 const SC=[
   {d:'Sunday',t:'The Burner',b:'db-b',ex:[
-    {id:'kb_swing_gorilla_deadlift',n:'KB Swing Gorilla Deadlift',r:'15 reps',w:25,rp:15,eq:'kb',vid:'kettlebell+swing+gorilla+deadlift',phR:{3:'15 reps · 35 lb KB (load step 1)'}},
-    {id:'pushups',n:'Push-ups',r:'reps',w:0,rp:10,vid:'push+up+proper+form'},
-    {id:'kb_snatch',n:'KB Snatches',r:'8 reps / arm',w:25,rp:8,ru:'/ arm',eq:'kb',vid:'kettlebell+snatch+tutorial',phR:{3:'8 reps / arm · 35 lb once shoulders are locked in'}},
-    {id:'db_devils_press',n:"DB Devil's Press",r:'10 reps',w:10,rp:10,eq:'db',vid:'dumbbell+devils+press+form',phR:{3:'10 reps · build from 10 toward 12–15 lb'}},
+    {id:'kb_swing_gorilla_deadlift',n:'KB Swing Gorilla Deadlift',r:'',w:25,rp:15,eq:'kb',vid:'kettlebell+swing+gorilla+deadlift',phR:{3:'35 lb KB (load step 1)'}},
+    {id:'pushups',n:'Push-ups',r:'',w:0,rp:10,vid:'push+up+proper+form'},
+    {id:'kb_snatch',n:'KB Snatches',r:'',w:25,rp:8,ru:'/ arm',eq:'kb',vid:'kettlebell+snatch+tutorial',phR:{3:'Move to 35 lb once shoulders are locked in'}},
+    {id:'db_devils_press',n:"DB Devil's Press",r:'',w:10,rp:10,eq:'db',vid:'dumbbell+devils+press+form',phR:{3:'Build from 10 toward 12–15 lb'}},
     // Core finisher — done once, after the AMRAP and before the walk (hd = section heading shown above it)
-    {id:'kb_suitcase_carry',hd:'After the AMRAP',n:'KB Suitcase Carry',r:'2 trips per side · bell in one hand, stand tall, no leaning',w:25,rp:40,ru:'steps / side',rpStep:5,eq:'kb',vid:'kettlebell+suitcase+carry+form'}
+    {id:'kb_suitcase_carry',hd:'After the AMRAP',n:'KB Suitcase Carry',r:'2 trips per side · bell in one hand, stand tall, no leaning',w:25,rp:40,ru:'/ side',rl:'Steps',rpStep:5,eq:'kb',vid:'kettlebell+suitcase+carry+form'}
   ],f:'20 Min AMRAP',
   wk:'Then: 45 Min Incline Walk',hr:'Zone 2 leading into Low Zone 3',
   wx:'Let heart rate climb naturally into Zone 3 during the second half.',
@@ -310,17 +310,17 @@ const SC=[
   {d:'Monday',t:'Recovery Walk',b:'db-w',ex:[],f:'Active Recovery Walk',
    wk:'45 Min Incline Walk',hr:'Solid Zone 2'},
   {d:'Tuesday',t:'Strength',b:'db-s',ex:[
-    {id:'kb_goblet_squat_curl',n:'KB Goblet Squat Curl',r:'12 reps · strict 2-sec pause + curl at bottom',w:25,rp:12,phRp:{2:14,3:8},eq:'kb',vid:'kettlebell+goblet+squat+curl',
-     phR:{2:'14 reps (+2) · strict 2-sec pause + curl at bottom',3:'8 reps → build back to 12 · 35 lb KB'}},
-    {id:'kb_deadlift_high_pull',n:'KB Deadlift to High Pull',r:'12 reps · hinge, then drive the bell to chest height',w:25,rp:12,phRp:{3:8},eq:'kb',vid:'kettlebell+deadlift+to+high+pull',
-     phR:{3:'8 reps → build back to 12 · 35 lb KB'}},
-    {id:'db_floor_press',n:'DB Floor Press',r:'10 reps · 4-sec lower + 1-sec dead stop',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+floor+press+form',
-     phR:{2:'12 reps (+2) · 4-sec lower + 1-sec dead stop',3:'10 reps · 20 lb DBs · 4-sec lower + 1-sec dead stop'}},
-    {id:'kb_swing',n:'KB Swings',r:'20 reps',w:25,rp:20,phRp:{3:16},eq:'kb',vid:'kettlebell+swing+form',
-     phR:{3:'16 reps → build back to 20 · 35 lb KB'}},
+    {id:'kb_goblet_squat_curl',n:'KB Goblet Squat Curl',r:'Strict 2-sec pause + curl at bottom',w:25,rp:12,phRp:{2:14,3:8},eq:'kb',vid:'kettlebell+goblet+squat+curl',
+     phR:{2:'+2 reps · strict 2-sec pause + curl at bottom',3:'35 lb KB · build back to 12'}},
+    {id:'kb_deadlift_high_pull',n:'KB Deadlift to High Pull',r:'Hinge, then drive the bell to chest height',w:25,rp:12,phRp:{3:8},eq:'kb',vid:'kettlebell+deadlift+to+high+pull',
+     phR:{3:'35 lb KB · build back to 12'}},
+    {id:'db_floor_press',n:'DB Floor Press',r:'4-sec lower + 1-sec dead stop',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+floor+press+form',
+     phR:{2:'+2 reps · 4-sec lower + 1-sec dead stop',3:'20 lb DBs · 4-sec lower + 1-sec dead stop'}},
+    {id:'kb_swing',n:'KB Swings',r:'',w:25,rp:20,phRp:{3:16},eq:'kb',vid:'kettlebell+swing+form',
+     phR:{3:'35 lb KB · build back to 20'}},
     // Core: front and side plank alternate rounds (anti-extension + anti-lateral flexion)
     {id:'plank',n:'Front Plank',r:'Rounds 1 & 3',w:0,rp:60,rpUnit:'sec',rpStep:10,vid:'plank+proper+form'},
-    {id:'side_plank',n:'Side Plank',r:'Rounds 2 & 4 · each side',w:0,rp:30,rpUnit:'sec',rpStep:5,vid:'side+plank+proper+form'}
+    {id:'side_plank',n:'Side Plank',r:'Rounds 2 & 4',ru:'/ side',w:0,rp:30,rpUnit:'sec',rpStep:5,vid:'side+plank+proper+form'}
   ],f:'4 Rounds',
   nt:'Rest 60 seconds between rounds. Keep it active with a light step-touch or boxer bounce.',
   pz:{key:'tue',phases:[
@@ -350,14 +350,14 @@ const SC=[
       'Steer clear of "Vinyasa," "Power Yoga," or "Flow" classes with lots of planks and chaturangas (push-up movements). They will over-fatigue your chest after Tuesday\'s floor presses.']}
   ]}},
   {d:'Thursday',t:'Unilateral & Flow',b:'db-u',ex:[
-    {id:'kb_rev_lunge',n:'Min 1: KB Reverse Lunge Pass-Through',r:'10 total lunges (5 / leg)',w:25,rp:10,phRp:{2:12},ru:'total',eq:'kb',vid:'kettlebell+reverse+lunge+pass+through',
-     phR:{2:'12 total lunges (6 / leg)',3:'10 total lunges (5 / leg) · 35 lb KB'}},
-    {id:'kb_sa_row',n:'Min 2: Single-Arm KB Rows',r:'10 reps / arm',w:25,rp:10,phRp:{2:12},ru:'/ arm',eq:'kb',vid:'single+arm+kettlebell+row+form',
-     phR:{2:'12 reps / arm',3:'10 reps / arm · 35 lb KB'}},
-    {id:'db_push_press',n:'Min 3: DB Push Press',r:'10 reps (12–15 lbs) · slight knee dip-and-drive',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+push+press+form',
-     phR:{2:'12 reps · slight knee dip-and-drive',3:'10 reps · 20 lb DBs · slight knee dip-and-drive'}},
-    {id:'db_plank_pull',n:'Min 4: DB Plank Pull-Throughs',r:'12 total pulls',w:10,rp:12,phRp:{2:16},ru:'total',eq:'db',vid:'dumbbell+plank+pull+through+form',
-     phR:{2:'16 total pulls',3:'12 total pulls · 12–15 lb DB'}}
+    {id:'kb_rev_lunge',n:'Min 1: KB Reverse Lunge Pass-Through',r:'Split evenly between legs',w:25,rp:10,phRp:{2:12},ru:'total',eq:'kb',vid:'kettlebell+reverse+lunge+pass+through',
+     phR:{3:'35 lb KB · split evenly between legs'}},
+    {id:'kb_sa_row',n:'Min 2: Single-Arm KB Rows',r:'',w:25,rp:10,phRp:{2:12},ru:'/ arm',eq:'kb',vid:'single+arm+kettlebell+row+form',
+     phR:{3:'35 lb KB'}},
+    {id:'db_push_press',n:'Min 3: DB Push Press',r:'Slight knee dip-and-drive',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+push+press+form',
+     phR:{3:'20 lb DBs · slight knee dip-and-drive'}},
+    {id:'db_plank_pull',n:'Min 4: DB Plank Pull-Throughs',r:'',w:10,rp:12,phRp:{2:16},ru:'total',rl:'Pulls',eq:'db',vid:'dumbbell+plank+pull+through+form',
+     phR:{3:'12–15 lb DB'}}
   ],f:'20m EMOM · 4 Rounds (5-min cycle)',
   // Rest row shown after the exercises (not logged — no checkbox)
   rest:{n:'Min 5: Mandatory Reset',d:'Full 60 seconds of complete rest'},
@@ -457,12 +457,8 @@ function valOf(k,suf,def){
 function repTarget(e,i){const c=SC[i],p=c.pz?curPh(c):1;return (e.phRp&&e.phRp[p])||e.rp;}
 // Reps for date k: logged that day, otherwise the target (reps do NOT carry forward — each session starts at target)
 function repVal(k,e){const v=Z.wt[k+'_r_'+e.id];return v!=null?Number(v):repTarget(e,new Date(k+'T00:00:00').getDay());}
-// Label under a bodyweight move: current value + any extra cue (e.g. "60s · Rounds 1 & 3")
-function bwLabel(e,v){
-  const val=e.rpUnit==='sec'?(v>=60?Math.floor(v/60)+'m'+((v%60)?' '+v%60+'s':''):v+'s'):v+' reps';
-  const extra=(e.r&&e.r!=='sec'&&e.r!=='reps')?' · '+e.r:'';
-  return val+extra;
-}
+// Counter display: seconds get an "s" (60s), reps are just the number
+function fmtRep(e,v){return e.rpUnit==='sec'?v+'s':String(v);}
 // All logged values for a suffix up to today, oldest first: [{d,v}]
 function series(suf){
   const t=dk(td()),out=[];
@@ -727,18 +723,17 @@ function rW(){
         const cur=e.w?valOf(k,wSuf,e.w):0;
         const reps=e.rp?repVal(k,e):0,tgt=e.rp?repTarget(e,i):0;
         const rpUnit=e.rpUnit||'reps',rpStep=e.rpStep||1;
-        const rpDisp=rpUnit==='sec'?(reps>=60?Math.floor(reps/60)+'m '+((reps%60)?reps%60+'s':''):reps+'s'):reps+' '+rpUnit;
         const lbl=(e.phR&&e.phR[ph])||e.r;
         if(e.hd)h+=`<div class="ex-hd">${e.hd}</div>`; // section heading (e.g. Sunday's post-AMRAP carry)
         const chSuf=e.w?wSuf:(e.rp?rSuf:null); // chart weight, or reps/seconds for bodyweight moves
-        // Rep counter: −1 / +1, starts at the phase target; orange when below target
-        const repCtl=e.rp?`<div class="wb" onclick="adjRep('${k}','${e.id}',-${rpStep})" aria-label="Fewer reps">−</div><div class="wv${reps<tgt?' below':''}" id="${rk}">${reps}</div><div class="wb" onclick="adjRep('${k}','${e.id}',${rpStep})" aria-label="More reps">+</div>`:'';
-        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle" aria-label="Form video">▶️</a>`:''}${chSuf?' '+chBtn(k,chSuf):''}</div><div class="ep">${e.w?lbl:(e.rp?bwLabel(e,reps):lbl)}</div>`;
-        // Weighted moves: reps counter sits under the name, weight stays on the right
-        if(e.w&&e.rp)h+=`<div class="rps"><span class="rps-l">Reps${e.ru?' '+e.ru:''}</span><div class="ws">${repCtl}</div></div>`;
+        // Rep counter: the ONLY place the rep/sec count is shown. Starts at the phase target; orange when below target.
+        const repCtl=e.rp?`<div class="wb" onclick="adjRep('${k}','${e.id}',-${rpStep})" aria-label="Less">−</div><div class="wv${reps<tgt?' below':''}" id="${rk}">${fmtRep(e,reps)}</div><div class="wb" onclick="adjRep('${k}','${e.id}',${rpStep})" aria-label="More">+</div>`:'';
+        const cue=e.rp&&!e.w?e.r:lbl; // label under the name = form cue only (no rep numbers)
+        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle" aria-label="Form video">▶️</a>`:''}${chSuf?' '+chBtn(k,chSuf):''}</div>${cue?`<div class="ep">${cue}</div>`:''}`;
+        // Counter sits under the name for every move (Reps / Steps / Pulls / Time); weight stays on the right
+        if(e.rp)h+=`<div class="rps"><span class="rps-l">${e.rl!=null?e.rl:(rpUnit==='sec'?'Time':'Reps')}${e.ru?' '+e.ru:''}</span><div class="ws">${repCtl}</div></div>`;
         h+=`</div>`;
         if(e.w)h+=`<div class="ws"><div class="wb" onclick="adj('${k}','${e.id}',-1)" aria-label="Lighter">−</div><div class="wv tap" id="${wk}" onclick="setWt('${k}','${e.id}')" title="Tap to type a weight">${cur}lbs</div><div class="wb" onclick="adj('${k}','${e.id}',1)" aria-label="Heavier">+</div></div>`;
-        else if(e.rp)h+=`<div class="ws">${repCtl}</div>`;
         h+=`</div>`;
         if(chSuf)h+=chBox(k,chSuf,e.rp&&rpUnit==='sec'?'s':(e.w?' lbs':' reps'));
       });
@@ -816,12 +811,7 @@ function adjRep(k,id,delta){
   const nv=Math.max(1,repVal(k,e)+delta);
   Z.wt[key]=nv;sv();
   const el=document.getElementById(key);
-  if(el){el.textContent=nv;el.classList.toggle('below',nv<repTarget(e,new Date(k+'T00:00:00').getDay()));}
-  // Bodyweight moves (no weight): keep the label under the name in sync
-  if(!e.w){
-    const ep=el?el.closest('.er').querySelector('.ep'):null;
-    if(ep)ep.textContent=bwLabel(e,nv);
-  }
+  if(el){el.textContent=fmtRep(e,nv);el.classList.toggle('below',nv<repTarget(e,new Date(k+'T00:00:00').getDay()));}
 }
 function togCard(k){
   const el=document.getElementById('dc-'+k);if(!el)return;
