@@ -23,6 +23,9 @@ h1{font-size:1.5rem;text-align:center;margin:8px 0 4px}
 /* Body Weight Tracker */
 .bw-bar{background:var(--card);border-radius:14px;padding:14px 16px;margin-bottom:18px;cursor:pointer}
 .bw-top{display:flex;justify-content:space-between;align-items:center}
+.bw-next{margin-top:10px;padding-top:10px;border-top:1px solid var(--border);font-size:.85rem;color:var(--text);line-height:1.4}
+.bw-next b{color:var(--accent)}
+.bw-next.done{color:var(--green)}
 .bw-label{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px}
 .bw-val{font-size:1.6rem;font-weight:800}
 .bw-delta{font-size:.85rem;font-weight:700;margin-left:8px}
@@ -53,6 +56,11 @@ h1{font-size:1.5rem;text-align:center;margin:8px 0 4px}
 .stats{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:18px}
 .stat{background:var(--card);border-radius:14px;padding:12px 6px;text-align:center}
 .sv{font-size:1.5rem;font-weight:800}.sv.ss{color:var(--orange)}.sv.sd{color:var(--green)}.sv.sw{color:var(--accent)}.sv.sb{color:var(--red)}
+/* Round 1 record pill under Best Streak / Days Done */
+.sl2{display:inline-block;margin-top:6px;padding:3px 8px;border-radius:10px;font-size:.72rem;font-weight:800;letter-spacing:.2px;
+  background:var(--accent-dim);color:var(--accent);border:1px solid rgba(74,158,255,.45);white-space:nowrap}
+.sl2.beat{background:var(--orange);color:#000;border-color:var(--orange)}
+body.light .sl2{border-color:rgba(37,99,235,.4)}
 .sl{font-size:.7rem;color:var(--muted);margin-top:3px;text-transform:uppercase;letter-spacing:.6px}
 .pbox{background:var(--card);border-radius:14px;padding:16px;margin-bottom:18px}
 .ph{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
@@ -108,6 +116,58 @@ h1{font-size:1.5rem;text-align:center;margin:8px 0 4px}
 .prg-in{margin-top:8px}
 .prg a{color:var(--accent)}
 .ep.wx{font-size:.8rem;line-height:1.4;margin-top:4px}
+.alt-opts{padding-left:18px}
+.alt-opts li{margin-bottom:3px}
+/* Tap-to-type weight */
+.wv.tap{cursor:pointer;text-decoration:underline dotted;text-underline-offset:3px}
+/* Section heading inside an exercise list (Sunday "After the AMRAP") */
+.ex-hd{margin:14px 0 2px;padding-top:12px;border-top:1px dashed var(--border);font-size:.75rem;font-weight:800;color:var(--orange);text-transform:uppercase;letter-spacing:.6px}
+/* Thursday Minute 5 rest row */
+.rest-row .rest-ic{width:32px;height:32px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}
+.rest-row .en{color:var(--green)}
+.rest-t{background:var(--green-dim);color:var(--green);font-weight:800;font-size:.9rem;padding:8px 12px;border-radius:8px}
+/* Warm-up block */
+.wu{background:var(--orange-dim);border:1px solid rgba(251,191,36,.35);border-radius:12px;padding:10px 14px;margin-bottom:14px;font-size:.88rem;line-height:1.5}
+.wu summary{cursor:pointer;font-weight:700;color:var(--orange);padding:4px 0}
+.wu ol{padding-left:22px;margin:6px 0 4px}
+.wu li{margin-bottom:2px}
+/* Rep counter under weighted exercises */
+.rps{display:flex;align-items:center;gap:10px;margin-top:8px}
+.rps-l{font-size:.75rem;color:var(--muted);font-weight:600;min-width:44px}
+.rps .wv{min-width:44px}
+.wv.below{color:var(--orange)}
+/* Segmented toggle (Saturday Beach/Gym, target Hit/Not yet) */
+.seg{display:flex;gap:0;margin:0 0 12px;border:1px solid #444;border-radius:10px;overflow:hidden}
+.seg button{flex:1;min-height:44px;background:var(--card2);color:var(--muted);border:none;font-size:.9rem;font-weight:700;cursor:pointer}
+.seg button+button{border-left:1px solid #444}
+.seg button.on{background:var(--accent);color:#000}
+.seg button.on.miss{background:var(--red);color:#000}
+/* Phase card */
+.phz{background:var(--card2);border:1px solid rgba(74,158,255,.35);border-radius:12px;padding:12px 14px;margin-bottom:14px;font-size:.88rem;line-height:1.45}
+.phz-top{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap}
+.phz-badge{background:var(--accent);color:#000;font-weight:800;font-size:.72rem;padding:3px 10px;border-radius:10px;text-transform:uppercase;letter-spacing:.5px}
+.phz-name{font-weight:700}
+.phz-tg{margin-bottom:8px}
+.phz-now{margin-bottom:8px}
+.phz-q{font-weight:600;margin:4px 0 8px}
+.phz-mut{color:var(--muted);font-size:.8rem}
+.phz-run{color:var(--muted);font-size:.8rem;margin-bottom:6px}
+.phz-run .dots{color:var(--green);letter-spacing:2px;font-size:1rem}
+.phz-ready{background:var(--green-dim);border-radius:10px;padding:10px 12px;margin:8px 0}
+.phz-adv{width:100%;min-height:44px;background:var(--green);color:#000;border:none;border-radius:10px;font-size:.95rem;font-weight:800;cursor:pointer;margin-bottom:8px}
+.phz-st{display:flex;gap:10px;align-items:flex-start;padding:8px 0;cursor:pointer}
+.phz-st .ck{width:26px;height:26px}
+.phz-how{margin:8px 0 0}
+.prg-ph.cur{border-left:3px solid var(--accent);padding-left:8px}
+.ph-sel{background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;font-size:.85rem;max-width:60%}
+/* Per-exercise charts */
+.chb{background:none;border:none;font-size:.85rem;cursor:pointer;padding:2px 4px;vertical-align:middle}
+.chx{background:var(--card2);border-radius:10px;padding:10px 12px;margin:0 0 10px;font-size:.78rem;color:var(--muted)}
+.chx-top{display:flex;justify-content:space-between;margin-bottom:6px;gap:8px;flex-wrap:wrap}
+.chx-top b{color:var(--text)}
+.chx-c{height:70px;position:relative}
+.chx-c canvas{width:100%;height:100%;display:block}
+.chx-empty{text-align:center;padding:6px 0}
 .nt{font-size:.8rem;color:var(--muted);margin:-6px 0 12px;line-height:1.4}
 .rnd{display:flex;align-items:center;justify-content:space-between;background:var(--card2);border-radius:10px;padding:12px 14px;margin-bottom:14px}
 .rnd-label{font-size:.9rem;font-weight:600}
@@ -216,54 +276,65 @@ body.light .cele-card{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 </div>
 </div>
 <script>
-// Shared rule shown at the top of each day's progression box (6-Month Master Blueprint)
+// ═══ ROUTINE (6-Month Master Blueprint — see BLUEPRINT.md) ═══
+// Exercise fields: id = permanent key for logs/charts (never change it), eq = 'kb'|'db' weight list,
+// w = starting weight, rp = target reps (or seconds) — the rep counter starts here every session,
+// phRp = target reps override per phase, ru = rep unit label ('/ arm', 'total'), phR = text label override per phase.
+// Day field pz = phase config: key, phases[{n, tg (target), d (what changes), auto?(k), dur?, steps?}].
 const R4='<b>The Rule of 4:</b> You only advance weights or volume when you can hit your target rep counts across ALL rounds/active minutes with perfect form and required tempos.';
+const R2='<b>Two in a row:</b> Hit the phase target in 2 sessions in a row and the app will offer to move you to the next phase. A missed target resets the count.';
 const SC=[
   {d:'Sunday',t:'The Burner',b:'db-b',ex:[
-    {n:'KB Deadlifts',r:'15 reps',w:25,vid:'kettlebell+deadlift+form'},
-    {n:'Push-ups',r:'reps',w:0,rp:10,vid:'push+up+proper+form'},
-    {n:'KB Snatches',r:'8 reps / arm',w:25,vid:'kettlebell+snatch+tutorial'},
-    {n:"DB Devil's Press",r:'10 reps',w:10,vid:'dumbbell+devils+press+form'}
+    {id:'kb_swing_gorilla_deadlift',n:'KB Swing Gorilla Deadlift',r:'15 reps',w:25,rp:15,eq:'kb',vid:'kettlebell+swing+gorilla+deadlift',phR:{3:'15 reps · 35 lb KB (load step 1)'}},
+    {id:'pushups',n:'Push-ups',r:'reps',w:0,rp:10,vid:'push+up+proper+form'},
+    {id:'kb_snatch',n:'KB Snatches',r:'8 reps / arm',w:25,rp:8,ru:'/ arm',eq:'kb',vid:'kettlebell+snatch+tutorial',phR:{3:'8 reps / arm · 35 lb once shoulders are locked in'}},
+    {id:'db_devils_press',n:"DB Devil's Press",r:'10 reps',w:10,rp:10,eq:'db',vid:'dumbbell+devils+press+form',phR:{3:'10 reps · build from 10 toward 12–15 lb'}},
+    // Core finisher — done once, after the AMRAP and before the walk (hd = section heading shown above it)
+    {id:'kb_suitcase_carry',hd:'After the AMRAP',n:'KB Suitcase Carry',r:'2 trips per side · bell in one hand, stand tall, no leaning',w:25,rp:40,ru:'steps / side',rpStep:5,eq:'kb',vid:'kettlebell+suitcase+carry+form'}
   ],f:'20 Min AMRAP',
   wk:'Then: 45 Min Incline Walk',hr:'Zone 2 leading into Low Zone 3',
   wx:'Let heart rate climb naturally into Zone 3 during the second half.',
-  // Sunday slice of the phase-by-phase progression track
-  pr:{title:'Sunday Progression Track',intro:R4,phases:[
-    {n:'Phase 1: The Pacing Floor (Current Baseline)',items:[
-      'Hit 4 complete rounds inside the 20-minute cap. Focus on minimizing transition times between exercises.']},
-    {n:'Phase 2: The Volume & Density Escalation',items:[
-      'Expand your time block to a 25-minute cap. Advance once you can complete 5 full rounds within 25 minutes using the same starting weights.']},
-    {n:'Phase 3: The Strength Load Matrix',items:[
-      'Drop back down to a strict 20-minute time cap to handle the heavy iron. Introduce the 35 lb kettlebell sequentially:'],
-     stTitle:'',ol:1,steps:[
-      'Use 35 lbs for Sunday Deadlifts only. Snatches stay at 25 lbs.',
+  pz:{key:'sun',phases:[
+    {n:'The Pacing Floor',dur:20,tg:'Hit 4 complete rounds inside the 20-minute cap.',
+     d:'Baseline weights. Focus on minimizing transition times between exercises.',
+     auto:k=>sunRounds(k)>=4&&sunDur(k)<=20},
+    {n:'The Volume & Density Escalation',dur:25,f:'25 Min AMRAP',tg:'Complete 5 full rounds within a 25-minute cap.',
+     d:'Expand the time block to 25 minutes using the same starting weights.',
+     auto:k=>sunRounds(k)>=5&&sunDur(k)<=25},
+    {n:'The Strength Load Matrix',dur:20,tg:'Work through the load steps below, one at a time, back on a strict 20-minute cap.',
+     d:'Drop back to a 20-minute cap to handle the heavy iron. Introduce the 35 lb kettlebell sequentially.',
+     steps:['Use 35 lbs for the Swing Gorilla Deadlifts only. Snatches stay at 25 lbs.',
       'Move Snatches to the 35 lb KB once shoulder stability feels completely locked in.',
       "Scale up Devil's Press dumbbells from 10 lbs toward 12–15 lbs."]}
   ]}},
   {d:'Monday',t:'Recovery Walk',b:'db-w',ex:[],f:'Active Recovery Walk',
    wk:'45 Min Incline Walk',hr:'Solid Zone 2'},
   {d:'Tuesday',t:'Strength',b:'db-s',ex:[
-    {n:'KB Goblet Squats',r:'12 reps · strict 2-sec pause at bottom',w:25,vid:'kettlebell+goblet+squat+form'},
-    {n:'Two-Handed KB High Pulls',r:'12 reps · symmetric straight pull',w:25,vid:'two+handed+kettlebell+high+pull+form'},
-    {n:'DB Floor Press',r:'10 reps · 4-sec lower + 1-sec dead stop',w:15,vid:'dumbbell+floor+press+form'},
-    {n:'KB Swings',r:'20 reps',w:25,vid:'kettlebell+swing+form'},
-    {n:'Plank',r:'sec',w:0,rp:60,rpUnit:'sec',rpStep:10,vid:'plank+proper+form'}
+    {id:'kb_goblet_squat_curl',n:'KB Goblet Squat Curl',r:'12 reps · strict 2-sec pause + curl at bottom',w:25,rp:12,phRp:{2:14,3:8},eq:'kb',vid:'kettlebell+goblet+squat+curl',
+     phR:{2:'14 reps (+2) · strict 2-sec pause + curl at bottom',3:'8 reps → build back to 12 · 35 lb KB'}},
+    {id:'kb_deadlift_high_pull',n:'KB Deadlift to High Pull',r:'12 reps · hinge, then drive the bell to chest height',w:25,rp:12,phRp:{3:8},eq:'kb',vid:'kettlebell+deadlift+to+high+pull',
+     phR:{3:'8 reps → build back to 12 · 35 lb KB'}},
+    {id:'db_floor_press',n:'DB Floor Press',r:'10 reps · 4-sec lower + 1-sec dead stop',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+floor+press+form',
+     phR:{2:'12 reps (+2) · 4-sec lower + 1-sec dead stop',3:'10 reps · 20 lb DBs · 4-sec lower + 1-sec dead stop'}},
+    {id:'kb_swing',n:'KB Swings',r:'20 reps',w:25,rp:20,phRp:{3:16},eq:'kb',vid:'kettlebell+swing+form',
+     phR:{3:'16 reps → build back to 20 · 35 lb KB'}},
+    // Core: front and side plank alternate rounds (anti-extension + anti-lateral flexion)
+    {id:'plank',n:'Front Plank',r:'Rounds 1 & 3',w:0,rp:60,rpUnit:'sec',rpStep:10,vid:'plank+proper+form'},
+    {id:'side_plank',n:'Side Plank',r:'Rounds 2 & 4 · each side',w:0,rp:30,rpUnit:'sec',rpStep:5,vid:'side+plank+proper+form'}
   ],f:'4 Rounds',
   nt:'Rest 60 seconds between rounds. Keep it active with a light step-touch or boxer bounce.',
-  // Tuesday slice of the phase-by-phase progression track
-  pr:{title:'Tuesday Progression Track',intro:R4,phases:[
-    {n:'Phase 1: The Pacing Floor (Current Baseline)',items:[
-      'Complete all target reps across all 4 rounds cleanly with the active 60-second rest window.']},
-    {n:'Phase 2: The Volume & Density Escalation',items:[
-      'Keep weights constant. If feeling great, focus on clean rep speed or add 2 reps to your Goblet Squats and Floor Presses.']},
-    {n:'Phase 3: The Strength Load Matrix',items:[
-      'Apply the Rule of 4 to step up your loads:'],
-     stTitle:'',steps:[
-      'KB Goblet Squats / Swings / High Pulls: Move from the 25 lb KB to the 35 lb KB. Drop starting reps by 4 and slowly build back to target lines.',
+  pz:{key:'tue',phases:[
+    {n:'The Pacing Floor',tg:'All target reps across all 4 rounds, clean form and tempos, with the active 60-second rest.',
+     d:'Baseline weights and reps.'},
+    {n:'The Volume & Density Escalation',tg:'All 4 rounds clean with +2 reps on Goblet Squat Curls (14) and Floor Presses (12).',
+     d:'Keep weights constant. Focus on clean rep speed and add 2 reps to Goblet Squat Curls and Floor Presses.'},
+    {n:'The Strength Load Matrix',tg:'Work through the load steps below using the Rule of 4.',
+     d:'Step up your loads. Drop starting reps by 4 on the heavier bell and build back to target lines.',
+     steps:['KB Goblet Squat Curls / Deadlift to High Pulls / Swings: Move from the 25 lb KB to the 35 lb KB. Drop starting reps by 4 and slowly build back to target lines.',
       'DB Floor Press: Advance from 15 lbs to 20 lbs.']}
   ]}},
   {d:'Wednesday',t:'Restorative Reset',b:'db-y',ex:[
-    {n:'20–30 Min Restorative / Yin Yoga Routine',r:'Online search · passive floor stretches',w:0,vid:'yin+yoga+deep+stretch+for+athletes'}
+    {id:'yoga',n:'20–30 Min Restorative / Yin Yoga Routine',r:'Online search · passive floor stretches',w:0,vid:'yin+yoga+deep+stretch+for+athletes'}
   ],f:'Restorative Reset',
   nt:'Focus: Passive floor stretches for hips, chest, and upper back. Avoid any classes with power movements, planks, or push-ups.',
   // Wednesday yoga framework (reference)
@@ -279,61 +350,74 @@ const SC=[
       'Steer clear of "Vinyasa," "Power Yoga," or "Flow" classes with lots of planks and chaturangas (push-up movements). They will over-fatigue your chest after Tuesday\'s floor presses.']}
   ]}},
   {d:'Thursday',t:'Unilateral & Flow',b:'db-u',ex:[
-    {n:'Min 1: KB Reverse Lunge Pass-Through',r:'10 total lunges (5 / leg)',w:25,vid:'kettlebell+reverse+lunge+pass+through'},
-    {n:'Min 2: Single-Arm KB Rows',r:'10 reps / arm',w:25,vid:'single+arm+kettlebell+row+form'},
-    {n:'Min 3: DB Push Press',r:'10 reps (12–15 lbs) · slight knee dip-and-drive',w:15,vid:'dumbbell+push+press+form'},
-    {n:'Min 4: DB Plank Pull-Throughs',r:'12 total pulls',w:10,vid:'dumbbell+plank+pull+through+form'}
-  ],f:'25m EMOM · 5 Rounds (5-min cycle)',
-  nt:'Do the reps at the start of each minute, then rest for the remainder of that minute. <b>Minute 5: MANDATORY RESET</b> (full 60 seconds of complete rest). Repeat for 5 total rounds. Aim to complete minutes 1–4 within 45 seconds to keep a 15-second micro-rest.',
-  // Thursday slice of the phase-by-phase progression track
-  pr:{title:'Thursday Progression Track',intro:R4,phases:[
-    {n:'Phase 1: The Pacing Floor (Current Baseline)',items:[
-      'Survive all 25 minutes while strictly keeping your 15-second micro-rest buffer during active minutes 1–4.']},
-    {n:'Phase 2: The Volume & Density Escalation',items:[
-      'Increase the rep density inside each 60-second active window while keeping starting weights the same:'],
-     stTitle:'',steps:[
-      'KB Reverse Lunges: Push to 12 total lunges (6 / leg)',
-      'Single-Arm KB Rows: Push to 12 reps / arm',
-      'DB Push Press: Push to 12 reps',
-      'DB Plank Pull-Throughs: Push to 16 total pulls']},
-    {n:'Phase 3: The Strength Load Matrix',items:[
-      'Reset all rep targets back to Phase 1 baselines (10 reps / 12 pulls) and increase the load:'],
-     stTitle:'',steps:[
-      'KB Rows: Upgrade to your 35 lb KB.',
+    {id:'kb_rev_lunge',n:'Min 1: KB Reverse Lunge Pass-Through',r:'10 total lunges (5 / leg)',w:25,rp:10,phRp:{2:12},ru:'total',eq:'kb',vid:'kettlebell+reverse+lunge+pass+through',
+     phR:{2:'12 total lunges (6 / leg)',3:'10 total lunges (5 / leg) · 35 lb KB'}},
+    {id:'kb_sa_row',n:'Min 2: Single-Arm KB Rows',r:'10 reps / arm',w:25,rp:10,phRp:{2:12},ru:'/ arm',eq:'kb',vid:'single+arm+kettlebell+row+form',
+     phR:{2:'12 reps / arm',3:'10 reps / arm · 35 lb KB'}},
+    {id:'db_push_press',n:'Min 3: DB Push Press',r:'10 reps (12–15 lbs) · slight knee dip-and-drive',w:15,rp:10,phRp:{2:12},eq:'db',vid:'dumbbell+push+press+form',
+     phR:{2:'12 reps · slight knee dip-and-drive',3:'10 reps · 20 lb DBs · slight knee dip-and-drive'}},
+    {id:'db_plank_pull',n:'Min 4: DB Plank Pull-Throughs',r:'12 total pulls',w:10,rp:12,phRp:{2:16},ru:'total',eq:'db',vid:'dumbbell+plank+pull+through+form',
+     phR:{2:'16 total pulls',3:'12 total pulls · 12–15 lb DB'}}
+  ],f:'20m EMOM · 4 Rounds (5-min cycle)',
+  // Rest row shown after the exercises (not logged — no checkbox)
+  rest:{n:'Min 5: Mandatory Reset',d:'Full 60 seconds of complete rest'},
+  nt:'Do the reps at the start of each minute, then rest for the remainder of that minute. Repeat the 5-minute cycle for 4 total rounds. Aim to complete minutes 1–4 within 45 seconds to keep a 15-second micro-rest.',
+  pz:{key:'thu',phases:[
+    {n:'The Pacing Floor',dur:20,tg:'All 4 rounds (20 min) while keeping a 15-second micro-rest in every active minute (1–4).',
+     d:'Baseline weights and reps. Focus on smooth coordination and balance.'},
+    {n:'The Volume & Density Escalation',dur:20,tg:'All 4 rounds at the higher reps (12 / 12 / 12 / 16) while keeping the 15-second buffer.',
+     d:'Same starting weights, more reps inside each 60-second window.'},
+    {n:'The Strength Load Matrix',dur:25,
+     // Phase 3 adds a 5th round — header and note switch automatically
+     f:'25m EMOM · 5 Rounds (5-min cycle)',
+     nt:'Do the reps at the start of each minute, then rest for the remainder of that minute. Repeat the 5-minute cycle for <b>5 total rounds</b>. Aim to complete minutes 1–4 within 45 seconds to keep a 15-second micro-rest.',
+     tg:'Try for 5 full rounds (25 min) at baseline reps (10 reps / 12 pulls) while working through the load steps below.',
+     d:'Reset reps to Phase 1 baselines, increase the load, and add a 5th round.',
+     steps:['KB Rows: Upgrade to your 35 lb KB.',
       'DB Push Press: Upgrade to 20 lbs.',
       'DB Plank Pull-Throughs: Upgrade to 12–15 lbs.',
       'KB Reverse Lunges: Upgrade to your 35 lb KB.']}
   ]}},
   {d:'Friday',t:'REST',b:'db-r',ex:[]},
-  {d:'Saturday',t:'Beach Run',b:'db-w',ex:[],f:'The Aerobic Engine (Primary Option)',
+  {d:'Saturday',t:'Aerobic Engine',b:'db-w',ex:[],f:'The Aerobic Engine',
    wi:'🏃',wk:'30–45 Min Continuous Beach Run (No Intervals)',hr:'Strict Zone 2 Target',
    wx:'Execution: Run on wet, packed sand near the water line. Keep a steady, rhythmic jog where you can breathe entirely through your nose.',
-   // Backup plan if the beach isn't an option
-   alt:{title:'The Gym Backup (Weather / Logistics Option)',
-     intro:'<b>30–45 Min Continuous Pacing (No Intervals)</b> – Strict Zone 2 Target<br>Equipment Options:',
+   // Gym backup — shown when "Gym" is picked in the Beach / Gym toggle
+   alt:{wi:'🏋️',wk:'30–45 Min Continuous Pacing (No Intervals)',hr:'Strict Zone 2 Target',
      items:[
       '<b>Option A (Elliptical):</b> Resistance level 6–10, low/flat incline, smooth gliding pace.',
-      '<b>Option B (Stationary Bike):</b> Resistance high enough to push firmly through heels, cadence 80+ RPM.']}}
+      '<b>Option B (Stationary Bike):</b> Resistance high enough to push firmly through heels, cadence 80+ RPM.',
+      '<b>Option C (Stair Climber):</b> Steady, moderate step rate you can hold the whole session. Stand tall, light touch on the rails (don\'t lean on them), and keep it at a nose-breathing Zone 2 pace.']}}
 ];
-// Revised bi-weekly progression tracker (shown as "Milestone This Week")
-const PG={
-  2:"<b>Week 2 (Tuesday):</b> Complete Tuesday's circuit with zero extra rest or technical pauses.",
-  4:"<b>Week 4 (Sunday):</b> Complete Sunday's 45 min incline walk without slowing down after lifting.",
-  6:"<b>Week 6 (Form Mastery):</b> Add a 3-second negative lowering phase to every single lunge on Thursday.",
-  8:"<b>Week 8 (Tuesday Density):</b> Transition your 60s Tuesday rest window from passive sitting into an active boxer bounce or slow step-touch.",
-  10:"<b>Week 10 (Sunday Load Step 1):</b> Introduce the 35 lb kettlebell strictly for Sunday Deadlifts.",
-  12:"<b>Week 12 (Thursday Depth):</b> Add a strict 2-second hold at the bottom of your reverse lunges.",
-  14:"<b>Week 14 (Sunday Phase 2 Check):</b> Attempt to stretch Sunday's time block to 25 minutes to target that 5-round milestone.",
-  16:"<b>Week 16 (Metabolic Rucking):</b> Add a 10 lb pack or weighted vest to Sunday and Saturday cardio walks to increase calorie burn without joint impact.",
-  18:"<b>Week 18 (Tuesday Tempo):</b> Introduce a strict 3-second descent on every DB Floor Press on Tuesday.",
-  20:"<b>Week 20 (Unilateral Power):</b> Shift Thursday's DB Push Press to a Single-Arm KB Clean and Press (5 reps / arm) using your 25 lb bell.",
-  22:"<b>Week 22 (Power Modification):</b> Tuesday KB Swings ➔ Single-Arm Swings (10/arm) to challenge your unilateral grip power.",
-  24:"<b>Week 24 (The Final Test):</b> Check your weight against your 180 lb target, and tackle Sunday's AMRAP using whatever heavy kettlebell combination your body has cleared you to use."
-};
+// Warm-up for every lifting day (Sun / Tue / Thu — days with a phase config): 2 rounds, 30 sec per move
+const WU={rounds:2,sec:30,moves:[
+  {n:'Butt-Kicker Air Jump Rope',vid:'butt+kicker+air+jump+rope'},
+  {n:'Alternating Reverse Lunges',vid:'alternating+reverse+lunge+form'},
+  {n:'Jumping Jacks',vid:'jumping+jacks+proper+form'},
+  {n:'Inchworm into Push-Up',vid:'inchworm+to+push+up'},
+  {n:'Spider Lunge into Down Dog',vid:'spiderman+lunge+to+downward+dog'},
+  {n:'Burpees with Jump',vid:'burpee+with+jump+form'}
+]};
+// Weight lists the − / + buttons step through (tap the number to type any weight)
+const WL={kb:[10,15,20,25,30,35,40,45,50,55,60],db:[5,8,10,12,15,20,25,30,35,40,45,50]};
 // v2 uses its own storage key so it starts fresh and never touches v1 data ('wt_v3')
-const TD=182,LK='wt_v4';
+// TD = program length in days (25 weeks: Sun Nov 8, 2026 → Sat May 1, 2027). Last day = start + TD - 1.
+const TD=175,LK='wt_v4';
+const NW=Math.ceil(TD/7); // number of program weeks (week navigator, badge/PR scans)
+// Round 1 (v1 app, Apr 26 – Oct 2026) records to beat — from the Oct 30 data export
+const R1={streak:91,days:135};
+// Small line under a stat: Round 1 record, or 🏆 once it's beaten
+function r1Line(cur,rec){return cur>rec?`<div class="sl2 beat" title="Beat your Round 1 record of ${rec}">🏆 Beat ${rec}</div>`:`<div class="sl2" title="Round 1 record">R1: ${rec}</div>`;}
+function lastDay(){const s=sd();return s?ad(s,TD-1):null;}
+// Program is finished once the last day is completed, or once it has passed
+function finished(){const s=sd();if(!s)return false;const L=lastDay();return !!Z.dn[dk(L)]||td()>L;}
+// v2 program defaults: starts Sunday Nov 8, 2026 (25 weeks → ends Sat May 1, 2027). Editable in Settings.
+// (Must be declared before Z=ld() below — mk() reads them.)
+const START_DEF='2026-11-08';
+function defGoals(){return [{lbs:190,by:'2027-01-01'},{lbs:180,by:'2027-04-30'}];}
 let Z=ld(),vw=gw();
-function mk(){return{s:null,dn:{},ck:{},wt:{},bw:{},badges:{},bestStreak:0,goals:[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}]};}
+let openCards=null; // day cards the user has open (survives re-renders)
+function mk(){return{s:START_DEF,dn:{},ck:{},wt:{},bw:{},badges:{},bestStreak:0,goals:defGoals(),ph:{sun:1,tue:1,thu:1},pt:{},ls:{},sat:{}};}
 function ld(){try{return JSON.parse(localStorage.getItem(LK))||mk();}catch(e){return mk();}}
 function sv(){localStorage.setItem(LK,JSON.stringify(Z));}
 function sd(){return Z.s?new Date(Z.s+'T00:00:00'):null;}
@@ -341,7 +425,7 @@ function dk(d){return d.toISOString().split('T')[0];}
 function td(){const d=new Date();d.setHours(0,0,0,0);return d;}
 function ad(d,n){const r=new Date(d);r.setDate(r.getDate()+n);return r;}
 function fd(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-function gw(){const s=sd();if(!s)return 1;return Math.max(1,Math.min(26,Math.floor((td()-s)/864e5/7)+1));}
+function gw(){const s=sd();if(!s)return 1;return Math.max(1,Math.min(NW,Math.floor((td()-s)/864e5/7)+1));}
 
 function streak(){
   let n=0,d=td();
@@ -350,9 +434,78 @@ function streak(){
   return n;
 }
 function ttl(){return Object.keys(Z.dn).length;}
-function pct(){const s=sd();if(!s)return 0;return Math.min(100,Math.max(0,Math.round((td()-s)/864e5/TD*100)));}
-function lw(day,i){const s=sd();if(!s)return 0;const di=SC.findIndex(x=>x.d===day);for(let w=vw-1;w>=1;w--){const v=Z.wt[dk(ad(s,(w-1)*7+di))+'_w'+i];if(v)return Number(v);}return 0;}
-function gWt(wk,def){return Z.wt[wk]!=null?Number(Z.wt[wk]):def;}
+function pct(){const s=sd();if(!s||td()<s)return 0;return Math.min(100,Math.round(((td()-s)/864e5+1)/TD*100));}
+// ═══ LOGGED VALUES (carry-forward) ═══
+// Z.wt keys are '<YYYY-MM-DD><suffix>', e.g. '2026-11-01_w_kb_deadlift', '_r_pushups', '_rnd', '_dur', '_time'.
+// Most recent value logged BEFORE date k for this suffix (exact suffix match), or null.
+function prevVal(k,suf){
+  let best=null,bd='';
+  for(const key in Z.wt){
+    if(key.slice(10)!==suf)continue;
+    const d=key.slice(0,10);
+    if(d<k&&d>bd&&Z.wt[key]!=null){bd=d;best=Number(Z.wt[key]);}
+  }
+  return best;
+}
+// Value for date k: logged today → last logged before k → default.
+function valOf(k,suf,def){
+  if(Z.wt[k+suf]!=null)return Number(Z.wt[k+suf]);
+  const p=prevVal(k,suf);
+  return p!=null?p:def;
+}
+// Target reps for an exercise on day-of-week i in the current phase
+function repTarget(e,i){const c=SC[i],p=c.pz?curPh(c):1;return (e.phRp&&e.phRp[p])||e.rp;}
+// Reps for date k: logged that day, otherwise the target (reps do NOT carry forward — each session starts at target)
+function repVal(k,e){const v=Z.wt[k+'_r_'+e.id];return v!=null?Number(v):repTarget(e,new Date(k+'T00:00:00').getDay());}
+// Label under a bodyweight move: current value + any extra cue (e.g. "60s · Rounds 1 & 3")
+function bwLabel(e,v){
+  const val=e.rpUnit==='sec'?(v>=60?Math.floor(v/60)+'m'+((v%60)?' '+v%60+'s':''):v+'s'):v+' reps';
+  const extra=(e.r&&e.r!=='sec'&&e.r!=='reps')?' · '+e.r:'';
+  return val+extra;
+}
+// All logged values for a suffix up to today, oldest first: [{d,v}]
+function series(suf){
+  const t=dk(td()),out=[];
+  for(const key in Z.wt){
+    if(key.slice(10)!==suf)continue;
+    const d=key.slice(0,10),v=Number(Z.wt[key]);
+    if(d<=t&&v>0)out.push({d,v});
+  }
+  return out.sort((a,b)=>a.d.localeCompare(b.d));
+}
+// Lock in the values shown for a day (carried-forward weights/reps, default duration) so history and charts are complete.
+function snapshotDay(k){
+  const i=new Date(k+'T00:00:00').getDay(),c=SC[i];
+  c.ex.forEach(e=>{
+    if(e.w&&Z.wt[k+'_w_'+e.id]==null)Z.wt[k+'_w_'+e.id]=valOf(k,'_w_'+e.id,e.w);
+    if(e.rp&&Z.wt[k+'_r_'+e.id]==null)Z.wt[k+'_r_'+e.id]=repVal(k,e);
+  });
+  if((i===0||i===4)&&Z.wt[k+'_dur']==null)Z.wt[k+'_dur']=durDef(i);
+}
+
+// ═══ PHASES ═══
+// Z.ph = current phase per day key {sun,tue,thu}; Z.pt[date] = {p: phase at session, hit?: bool (self-report)};
+// Z.ls['<key>_<n>'] = Phase 3 load step done.
+function curPh(c){return (c.pz&&Z.ph&&Z.ph[c.pz.key])||1;}
+function phCfg(c,p){return c.pz.phases[(p||curPh(c))-1];}
+function durDef(i){const c=SC[i];return (c.pz&&phCfg(c).dur)||20;} // Sunday: per phase; Thursday: 4 rounds × 5 min = 20
+function sunRounds(k){return Number(Z.wt[k+'_rnd']||0);}
+function sunDur(k){return Z.wt[k+'_dur']!=null?Number(Z.wt[k+'_dur']):durDef(0);}
+// Did the session on date k hit its phase target? true / false / null (not recorded)
+function sessHit(c,k){
+  const r=Z.pt&&Z.pt[k];if(!r)return null;
+  const cfg=phCfg(c,r.p);
+  if(cfg.auto)return Z.dn[k]?!!cfg.auto(k):null;
+  return r.hit==null?null:!!r.hit;
+}
+// Consecutive target hits (most recent first) in the current phase for this day of week.
+function hitRun(i){
+  const c=SC[i],p=curPh(c);
+  const ks=Object.keys(Z.pt||{}).filter(k=>Z.pt[k].p===p&&new Date(k+'T00:00:00').getDay()===i).sort().reverse();
+  let n=0;
+  for(const k of ks){const h=sessHit(c,k);if(h===null)continue;if(h)n++;else break;}
+  return n;
+}
 
 // ═══ BODY WEIGHT ═══
 let bwOpen=false;
@@ -370,18 +523,30 @@ function rBW(){
     else if(diff>0){delta='+'+diff.toFixed(1)+'lbs';deltaCls='up';}
     else{delta='±0';deltaCls='flat';}
   }
+  // Next goal = earliest-dated goal not yet reached; always visible in the collapsed bar
+  const gl=(Z.goals||[]).slice().sort((a,b)=>a.by.localeCompare(b.by));
+  const nx=gl.find(g=>!(latest&&latest<=g.lbs));
+  let nxLine='';
+  if(nx){
+    const bd=new Date(nx.by+'T00:00:00'),dl=Math.ceil((bd-td())/864e5);
+    const when=bd.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+    nxLine=`<div class="bw-next">🎯 Next goal: <b>${nx.lbs} lbs</b> by ${when} · ${dl>=0?dl+' days left':'past due'}${latest?` · <b>${(latest-nx.lbs).toFixed(1)} lbs to go</b>`:''}</div>`;
+  } else if(gl.length&&latest){
+    nxLine=`<div class="bw-next done">✅ All goals reached!</div>`;
+  }
   let h=`<div class="bw-bar"><div class="bw-top" onclick="toggleBW()" style="cursor:pointer"><div><div class="bw-label">Current Weight</div><div><span class="bw-val">${latest?latest+'lbs':'— lbs'}</span>${delta?`<span class="bw-delta ${deltaCls}">${delta}</span>`:''}</div></div><div style="font-size:1.2rem;color:var(--muted)">${bwOpen?'▲':'▼'}</div></div>`;
+  h+=nxLine;
   if(bwOpen){
     h+=`<div class="bw-input-row" onclick="event.stopPropagation()"><input class="bw-inp" id="bw-inp" type="number" inputmode="decimal" placeholder="Enter weight" value="${todayVal}" onfocus="this.select()"><button class="bw-save" onclick="event.stopPropagation();saveBW()">Log</button></div>`;
-    // Goal weight display
-    if(Z.goals&&Z.goals.length&&latest){
+    // Goal weight display (shown even before the first weigh-in)
+    if(Z.goals&&Z.goals.length){
       h+=`<div class="bw-goals">`;
       Z.goals.forEach((g,gi)=>{
         const target=g.lbs;
         const byDate=new Date(g.by+'T00:00:00');
         const byLabel=byDate.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
-        const diff=latest-target;
-        const hit=latest<=target;
+        const diff=latest?latest-target:0;
+        const hit=!!latest&&latest<=target;
         const daysLeft=Math.max(0,Math.ceil((byDate-td())/864e5));
         // Progress: from first weight to target
         const startW=first||latest;
@@ -395,7 +560,8 @@ function rBW(){
         } else {
           h+=`<div class="bw-goal-top"><span class="bw-goal-lbl">🎯 Goal: ${target}lbs</span><span class="bw-goal-date">${pastDue?'Past due':daysLeft+' days left'} · ${byLabel}</span></div>`;
           h+=`<div class="bw-goal-bar"><div class="bw-goal-fill ${pastDue?'behind':'on-track'}" style="width:${pctDone}%"></div></div>`;
-          h+=`<div class="bw-goal-info"><span>${pctDone}% there</span><span>${diff.toFixed(1)}lbs to go</span></div>`;
+          h+=latest?`<div class="bw-goal-info"><span>${pctDone}% there</span><span>${diff.toFixed(1)}lbs to go</span></div>`
+                   :`<div class="bw-goal-info"><span>Log your weight to start tracking</span></div>`;
         }
         h+=`</div>`;
       });
@@ -458,28 +624,28 @@ function rS(){
   if(cs>Z.bestStreak){Z.bestStreak=cs;sv();}
   document.getElementById('st').innerHTML=
     `<div class="stat"><div class="sv ss">${cs}</div><div class="sl">Streak</div></div>`+
-    `<div class="stat"><div class="sv sb">${Z.bestStreak}</div><div class="sl">Best Streak</div></div>`+
-    `<div class="stat"><div class="sv sd">${ttl()}</div><div class="sl">Days Done</div></div>`+
+    `<div class="stat"><div class="sv sb">${Z.bestStreak}</div><div class="sl">Best Streak</div>${r1Line(Z.bestStreak,R1.streak)}</div>`+
+    `<div class="stat"><div class="sv sd">${ttl()}</div><div class="sl">Days Done</div>${r1Line(ttl(),R1.days)}</div>`+
     `<div class="stat"><div class="sv sw">${gw()}</div><div class="sl">Week</div></div>`;
   const p=pct(),s=sd();
   document.getElementById('pg').innerHTML=s?
     `<div class="pbox"><div class="ph"><span class="pt">6-Month Progress</span><span class="pp">${p}%</span></div>`+
     `<div class="ptr"><div class="pf" style="width:${p}%"></div></div>`+
-    `<div class="pd"><span>${fd(s)}</span><span>${fd(ad(s,TD))}</span></div></div>`:'';
+    `<div class="pd"><span>${fd(s)}</span><span>${fd(lastDay())}</span></div></div>`:'';
 }
 
 function rW(){
   document.getElementById('wn').innerHTML=
     `<div class="wn"><button onclick="cW(-1)" ${vw<=1?'disabled':''}>‹</button>`+
-    `<span class="wl">Week ${vw}</span><button onclick="cW(1)" ${vw>=26?'disabled':''}>›</button></div>`;
-  let pg=null;for(let w=vw;w>=2;w--){if(PG[w]){pg=PG[w];break;}}
-  document.getElementById('pn').innerHTML=pg?`<div class="pn"><div class="pnt">🎯 Milestone This Week</div>${pg}</div>`:'';
+    `<span class="wl">Week ${vw}</span><button onclick="cW(1)" ${vw>=NW?'disabled':''}>›</button></div>`;
+  // (Bi-weekly milestone banner removed in v2 — progression is driven by phases.)
   const bx=document.getElementById('dc'),s=sd();
   if(!s){bx.innerHTML='<div class="emp"><div style="font-size:2.5rem;margin-bottom:14px">📅</div><div style="font-size:1.1rem;color:var(--text);margin-bottom:6px">Set your start date</div><div>Go to Settings → Start Date</div></div>';return;}
   const ws=ad(s,(vw-1)*7),tk=dk(td());let h='';
+  if(!openCards)openCards=new Set([tk]); // today's card starts open; re-renders keep open cards open
   for(let i=0;i<7;i++){
     const dt=ad(ws,i),k=dk(dt),c=SC[i],it=k===tk,dn=!!Z.dn[k],ir=c.t==='REST';
-    h+=`<div class="dc${it?' ist open':''}"><div class="dh" onclick="this.parentElement.classList.toggle('open')"><div><span class="dn">${c.d}</span>${it?'<span class="tt">TODAY</span>':''}</div><span class="db ${dn?'db-d':c.b}">${dn?'✅ Done':(i===5?'Rest / Make-up':c.t)}</span></div><div class="dy">`;
+    h+=`<div class="dc${openCards.has(k)?' open':''}${it?' ist':''}" id="dc-${k}"><div class="dh" onclick="togCard('${k}')"><div><span class="dn">${c.d}</span>${it?'<span class="tt">TODAY</span>':''}</div><span class="db ${dn?'db-d':c.b}">${dn?'✅ Done':(i===5?'Rest / Make-up':c.t)}</span></div><div class="dy">`;
     if(ir){
       // Friday make-up day logic
       if(i===5){
@@ -503,8 +669,10 @@ function rW(){
       }
     }
     else{
-      if(c.f)h+=`<div class="ft">${c.f}</div>`;
-      if(c.nt)h+=`<div class="nt">${c.nt}</div>`;
+      // A phase can override the day's header (f) and note (nt), e.g. Thursday Phase 3 = 5 rounds
+      const pc=c.pz?phCfg(c):null,fTxt=(pc&&pc.f)||c.f,ntTxt=(pc&&pc.nt)||c.nt;
+      if(fTxt)h+=`<div class="ft">${fTxt}</div>`;
+      if(ntTxt)h+=`<div class="nt">${ntTxt}</div>`;
       if(c.pr){
         // Collapsible progression track for this day
         h+=`<details class="prg"><summary>📈 ${c.pr.title}</summary>`;
@@ -522,54 +690,66 @@ function rW(){
         });
         h+=`</details>`;
       }
+      // Phase card: current phase, target, two-in-a-row progress, advance prompt
+      if(c.pz)h+=`<div id="phz-${k}">${phasePanel(i,k)}</div>`;
+      // Warm-up (lifting days): reference list only — tap the header to collapse
+      if(c.pz){
+        const mins=WU.rounds*WU.moves.length*WU.sec/60;
+        h+=`<div class="wu"><details open><summary>🔥 Warm-Up · ${WU.rounds} rounds · ${WU.sec} sec each <span class="phz-mut">(~${mins} min)</span></summary><ol>`;
+        WU.moves.forEach(m=>{h+=`<li>${m.n} <a href="https://www.youtube.com/results?search_query=${m.vid}" target="_blank" rel="noopener" style="text-decoration:none;font-size:.8rem" aria-label="${m.n} form video">▶️</a></li>`;});
+        h+=`</ol></details></div>`;
+      }
       if(i===0){
-        // Duration stepper for Sunday
-        const durK=k+'_dur';
-        const durV=Z.wt[durK]!=null?Number(Z.wt[durK]):20;
-        h+=`<div class="rnd"><div><div class="rnd-label">⏱️ Workout Duration</div></div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjDur('${durK}',-5)">−</div><div class="rnd-val" id="${durK}">${durV}m</div><div class="rnd-btn" onclick="adjDur('${durK}',5)">+</div></div></div>`;
-        const rk=k+'_rnd',rv=Z.wt[rk]||0;
-        let prevR=0;
-        for(let pw=vw-1;pw>=1;pw--){
-          const pd=ad(s,(pw-1)*7+i);
-          const prv=Z.wt[dk(pd)+'_rnd'];
-          if(prv!=null){prevR=Number(prv);break;}
-        }
-        h+=`<div class="rnd"><div><div class="rnd-label">🔄 Rounds Completed</div>${prevR?`<div style="font-size:.75rem;color:var(--muted);margin-top:3px">Last: <span style="color:var(--orange);font-weight:700">${prevR} rounds</span></div>`:''}</div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjR('${rk}',-1)">−</div><div class="rnd-val" id="${rk}">${rv}</div><div class="rnd-btn" onclick="adjR('${rk}',1)">+</div></div></div>`;
+        // Sunday duration: 1-minute steps; default comes from the current phase (20 or 25)
+        const durK=k+'_dur',durV=sunDur(k);
+        h+=`<div class="rnd"><div><div class="rnd-label">⏱️ Workout Duration</div></div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjDur('${k}',0,-1)">−</div><div class="rnd-val" id="${durK}">${durV}m</div><div class="rnd-btn" onclick="adjDur('${k}',0,1)">+</div></div></div>`;
+        const rk=k+'_rnd',rv=Z.wt[rk]||0,prevR=prevVal(k,'_rnd');
+        h+=`<div class="rnd"><div><div class="rnd-label">🔄 Rounds Completed ${chBtn(k,'_rnd')}</div>${prevR?`<div style="font-size:.75rem;color:var(--muted);margin-top:3px">Last: <span style="color:var(--orange);font-weight:700">${prevR} rounds</span></div>`:''}</div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjR('${rk}',-1)">−</div><div class="rnd-val" id="${rk}">${rv}</div><div class="rnd-btn" onclick="adjR('${rk}',1)">+</div></div></div>`;
+        h+=chBox(k,'_rnd');
       }
       if(i===4){
-        // Duration stepper for Thursday (default 25 min = 5 rounds x 5-min cycle)
-        const durK=k+'_dur';
-        const durV=Z.wt[durK]!=null?Number(Z.wt[durK]):25;
-        h+=`<div class="rnd"><div><div class="rnd-label">⏱️ Workout Duration</div></div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjDur('${durK}',-5)">−</div><div class="rnd-val" id="${durK}">${durV}m</div><div class="rnd-btn" onclick="adjDur('${durK}',5)">+</div></div></div>`;
+        // Thursday duration: 5-minute steps (one full EMOM cycle), default 20 (4 rounds)
+        const durK=k+'_dur',durV=Z.wt[durK]!=null?Number(Z.wt[durK]):durDef(4);
+        h+=`<div class="rnd"><div><div class="rnd-label">⏱️ Workout Duration</div></div><div class="rnd-ctrl"><div class="rnd-btn" onclick="adjDur('${k}',4,-5)">−</div><div class="rnd-val" id="${durK}">${durV}m</div><div class="rnd-btn" onclick="adjDur('${k}',4,5)">+</div></div></div>`;
       }
       if(i===2){
-        const tk=k+'_time',saved=Z.wt[tk]||0;
-        let prevT=0;
-        for(let pw=vw-1;pw>=1;pw--){
-          const pd=ad(s,(pw-1)*7+2);
-          const prv=Z.wt[dk(pd)+'_time'];
-          if(prv!=null&&Number(prv)>0){prevT=Number(prv);break;}
-        }
-        h+=`<div class="tmr" id="tmr-${k}"><div class="tmr-top"><span class="tmr-label">⏱️ Circuit Time</span></div>`;
+        const tk=k+'_time',saved=Z.wt[tk]||0,prevT=prevVal(k,'_time');
+        h+=`<div class="tmr" id="tmr-${k}"><div class="tmr-top"><span class="tmr-label">⏱️ Circuit Time ${chBtn(k,'_time')}</span></div>`;
         h+=`<div class="tmr-display" id="td-${k}">${fmtTime(saved)}</div>`;
         h+=`<div class="tmr-btns"><button class="tmr-btn go" id="tb-${k}" onclick="tmrToggle('${k}')">Start</button><button class="tmr-btn rst" onclick="tmrReset('${k}')">Reset</button></div>`;
-        if(prevT)h+=`<div class="tmr-prev">Last week: <span style="color:var(--orange);font-weight:700">${fmtTime(prevT)}</span></div>`;
-        h+=`</div>`;
+        if(prevT)h+=`<div class="tmr-prev">Last time: <span style="color:var(--orange);font-weight:700">${fmtTime(prevT)}</span></div>`;
+        h+=chBox(k,'_time')+`</div>`;
       }
-      c.ex.forEach((e,j)=>{
-        const ek=k+'_'+j,wk=k+'_w'+j,on=!!Z.ck[ek];
-        const cur=e.w?gWt(wk,e.w):0;
-        const rk=k+'_r'+j;
-        const repVal=e.rp?(Z.wt[rk]!=null?Number(Z.wt[rk]):e.rp):0;
-        const rpUnit=e.rpUnit||'reps';
-        const rpStep=e.rpStep||1;
-        const rpDisp=rpUnit==='sec'?(repVal>=60?Math.floor(repVal/60)+'m '+((repVal%60)?repVal%60+'s':''):repVal+'s'):repVal+' '+rpUnit;
-        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle">▶️</a>`:''}</div><div class="ep">${e.rp?rpDisp:e.r}</div></div>${e.w?`<div class="ws"><div class="wb" onclick="adj('${wk}',${e.w},-5)">−</div><div class="wv" id="${wk}">${cur}lbs</div><div class="wb" onclick="adj('${wk}',${e.w},5)">+</div></div>`:''}${e.rp?`<div class="ws"><div class="wb" onclick="adjRep('${rk}',${e.rp},-${rpStep})">−</div><div class="wv" id="${rk}">${repVal}</div><div class="wb" onclick="adjRep('${rk}',${e.rp},${rpStep})">+</div></div>`:''}</div>`;
+      const ph=c.pz?curPh(c):1;
+      c.ex.forEach(e=>{
+        const ek=k+'_'+e.id,on=!!Z.ck[ek];
+        const wSuf='_w_'+e.id,rSuf='_r_'+e.id,wk=k+wSuf,rk=k+rSuf;
+        const cur=e.w?valOf(k,wSuf,e.w):0;
+        const reps=e.rp?repVal(k,e):0,tgt=e.rp?repTarget(e,i):0;
+        const rpUnit=e.rpUnit||'reps',rpStep=e.rpStep||1;
+        const rpDisp=rpUnit==='sec'?(reps>=60?Math.floor(reps/60)+'m '+((reps%60)?reps%60+'s':''):reps+'s'):reps+' '+rpUnit;
+        const lbl=(e.phR&&e.phR[ph])||e.r;
+        if(e.hd)h+=`<div class="ex-hd">${e.hd}</div>`; // section heading (e.g. Sunday's post-AMRAP carry)
+        const chSuf=e.w?wSuf:(e.rp?rSuf:null); // chart weight, or reps/seconds for bodyweight moves
+        // Rep counter: −1 / +1, starts at the phase target; orange when below target
+        const repCtl=e.rp?`<div class="wb" onclick="adjRep('${k}','${e.id}',-${rpStep})" aria-label="Fewer reps">−</div><div class="wv${reps<tgt?' below':''}" id="${rk}">${reps}</div><div class="wb" onclick="adjRep('${k}','${e.id}',${rpStep})" aria-label="More reps">+</div>`:'';
+        h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle" aria-label="Form video">▶️</a>`:''}${chSuf?' '+chBtn(k,chSuf):''}</div><div class="ep">${e.w?lbl:(e.rp?bwLabel(e,reps):lbl)}</div>`;
+        // Weighted moves: reps counter sits under the name, weight stays on the right
+        if(e.w&&e.rp)h+=`<div class="rps"><span class="rps-l">Reps${e.ru?' '+e.ru:''}</span><div class="ws">${repCtl}</div></div>`;
+        h+=`</div>`;
+        if(e.w)h+=`<div class="ws"><div class="wb" onclick="adj('${k}','${e.id}',-1)" aria-label="Lighter">−</div><div class="wv tap" id="${wk}" onclick="setWt('${k}','${e.id}')" title="Tap to type a weight">${cur}lbs</div><div class="wb" onclick="adj('${k}','${e.id}',1)" aria-label="Heavier">+</div></div>`;
+        else if(e.rp)h+=`<div class="ws">${repCtl}</div>`;
+        h+=`</div>`;
+        if(chSuf)h+=chBox(k,chSuf,e.rp&&rpUnit==='sec'?'s':(e.w?' lbs':' reps'));
       });
-      if(c.wk){const wk=k+'_walk',wc=!!Z.ck[wk];
-        h+=`<div class="er"><div class="ck${wc?' on':''}" onclick="tE('${wk}',this)"></div><div class="ei"><div class="en">${c.wi||'🚶'} ${c.wk}</div>${c.hr?`<div class="ep">❤️ ${c.hr}</div>`:''}${c.wx?`<div class="ep wx">${c.wx}</div>`:''}</div></div>`;
-        // Optional backup cardio plan (e.g., Saturday gym option)
-        if(c.alt)h+=`<details class="prg" style="margin-top:12px"><summary>🏋️ ${c.alt.title}</summary><div class="prg-in">${c.alt.intro}</div><ul>${c.alt.items.map(x=>`<li>${x}</li>`).join('')}</ul></details>`;}
+      if(c.rest)h+=`<div class="er rest-row"><div class="rest-ic" aria-hidden="true">⏸️</div><div class="ei"><div class="en">${c.rest.n}</div><div class="ep">${c.rest.d}</div></div><div class="rest-t">60s</div></div>`;
+      if(c.wk){
+        // Saturday: Beach / Gym toggle swaps the cardio row to the gym backup
+        const gym=!!(c.alt&&Z.sat&&Z.sat[k]==='gym');
+        if(c.alt)h+=`<div class="seg" role="group" aria-label="Where did you train?"><button class="${gym?'':'on'}" aria-pressed="${!gym}" onclick="setSat('${k}','beach')">🏖️ Beach</button><button class="${gym?'on':''}" aria-pressed="${gym}" onclick="setSat('${k}','gym')">🏋️ Gym</button></div>`;
+        const cw=gym?c.alt:c,wk=k+'_walk',wc=!!Z.ck[wk];
+        h+=`<div class="er"><div class="ck${wc?' on':''}" onclick="tE('${wk}',this)"></div><div class="ei"><div class="en">${cw.wi||'🚶'} ${cw.wk}</div>${cw.hr?`<div class="ep">❤️ ${cw.hr}</div>`:''}${cw.wx?`<div class="ep wx">${cw.wx}</div>`:''}${gym?`<ul class="ep wx alt-opts">${c.alt.items.map(x=>`<li>${x}</li>`).join('')}</ul>`:''}</div></div>`;
+      }
       h+=`<button class="cb ${dn?'un':'mk'}" onclick="tD('${k}')">${dn?'Undo Complete':'Mark Day Complete ✓'}</button>`;
     }
     h+='</div></div>';
@@ -587,13 +767,28 @@ function hap(style){
 
 function tE(k,el){hap('light');if(Z.ck[k]){delete Z.ck[k];el.classList.remove('on');}else{Z.ck[k]=1;el.classList.add('on');}sv();}
 function sWt(k,v){if(v)Z.wt[k]=v;else delete Z.wt[k];sv();}
-function adj(wk,def,delta){
+// NOTE: stepper handlers update the DOM directly (no rW) so the open card doesn't re-render mid-workout.
+function exOf(k,id){return SC[new Date(k+'T00:00:00').getDay()].ex.find(x=>x.id===id);}
+function showWt(k,id,v){const el=document.getElementById(k+'_w_'+id);if(el)el.textContent=v+'lbs';}
+// − / + step through the standard weight list for that equipment (falls back to ±5 outside the list)
+function adj(k,id,dir){
   hap('light');
-  const cur=gWt(wk,def);
-  const nv=Math.max(0,cur+delta);
-  Z.wt[wk]=nv;sv();
-  const el=document.getElementById(wk);
-  if(el)el.textContent=nv+'lbs';
+  const e=exOf(k,id);if(!e)return;
+  const cur=valOf(k,'_w_'+id,e.w),list=WL[e.eq]||[];
+  let nv;
+  if(dir>0){nv=list.find(x=>x>cur);if(nv==null)nv=cur+5;}
+  else{nv=[...list].reverse().find(x=>x<cur);if(nv==null)nv=Math.max(0,cur-5);}
+  Z.wt[k+'_w_'+id]=nv;sv();showWt(k,id,nv);
+}
+// Tap the weight to type any value (e.g. 12.5)
+function setWt(k,id){
+  const e=exOf(k,id);if(!e)return;
+  const cur=valOf(k,'_w_'+id,e.w);
+  const raw=prompt(e.n+' — weight in lbs:',cur);
+  if(raw==null)return;
+  const v=Math.round(parseFloat(raw)*2)/2; // nearest 0.5 lb
+  if(!isFinite(v)||v<0||v>500){alert('Enter a weight between 0 and 500 lbs.');return;}
+  Z.wt[k+'_w_'+id]=v;sv();showWt(k,id,v);
 }
 function adjR(rk,delta){
   hap('light');
@@ -602,56 +797,166 @@ function adjR(rk,delta){
   Z.wt[rk]=nv;sv();
   const el=document.getElementById(rk);
   if(el)el.textContent=nv;
+  if(rk.endsWith('_rnd'))refreshPhase(0,rk.slice(0,10)); // Sunday target status is live
 }
-function adjDur(dk,delta){
+function adjDur(k,i,delta){
   hap('light');
-  const cur=Z.wt[dk]!=null?Number(Z.wt[dk]):20;
+  const key=k+'_dur';
+  const cur=Z.wt[key]!=null?Number(Z.wt[key]):(i===0?sunDur(k):durDef(i));
   const nv=Math.max(5,Math.min(60,cur+delta));
-  Z.wt[dk]=nv;sv();
-  const el=document.getElementById(dk);
+  Z.wt[key]=nv;sv();
+  const el=document.getElementById(key);
   if(el)el.textContent=nv+'m';
+  if(i===0)refreshPhase(0,k);
 }
-function adjRep(rk,def,delta){
+function adjRep(k,id,delta){
   hap('light');
-  const cur=Z.wt[rk]!=null?Number(Z.wt[rk]):def;
-  const nv=Math.max(1,cur+delta);
-  Z.wt[rk]=nv;sv();
-  const el=document.getElementById(rk);
-  if(el)el.textContent=nv;
-  // Update the display label next to the exercise name
-  const row=el?el.closest('.er'):null;
-  if(row){
-    const ep=row.querySelector('.ep');
-    if(ep){
-      // Detect if this is seconds-based (plank) by checking if value >= 10 and step is 10
-      if(Math.abs(delta)>=10){
-        ep.textContent=nv>=60?(Math.floor(nv/60)+'m'+((nv%60)?' '+nv%60+'s':'')):nv+'s';
-      } else {
-        ep.textContent=nv+' reps';
-      }
-    }
+  const e=exOf(k,id);if(!e)return;
+  const key=k+'_r_'+id;
+  const nv=Math.max(1,repVal(k,e)+delta);
+  Z.wt[key]=nv;sv();
+  const el=document.getElementById(key);
+  if(el){el.textContent=nv;el.classList.toggle('below',nv<repTarget(e,new Date(k+'T00:00:00').getDay()));}
+  // Bodyweight moves (no weight): keep the label under the name in sync
+  if(!e.w){
+    const ep=el?el.closest('.er').querySelector('.ep'):null;
+    if(ep)ep.textContent=bwLabel(e,nv);
   }
 }
+function togCard(k){
+  const el=document.getElementById('dc-'+k);if(!el)return;
+  el.classList.toggle('open');
+  if(el.classList.contains('open'))openCards.add(k);else openCards.delete(k);
+}
+function setSat(k,v){hap('light');if(!Z.sat)Z.sat={};Z.sat[k]=v;sv();rW();}
+
+// ═══ PHASE PANEL ═══
+function refreshPhase(i,k){const el=document.getElementById('phz-'+k);if(el&&SC[i].pz)el.innerHTML=phasePanel(i,k);}
+function phasePanel(i,k){
+  const c=SC[i],p=curPh(c),cfg=phCfg(c),N=c.pz.phases.length,last=p===N,past=k<=dk(td());
+  let h=`<div class="phz"><div class="phz-top"><span class="phz-badge">Phase ${p} of ${N}</span><span class="phz-name">${cfg.n}</span></div>`;
+  h+=`<div class="phz-tg">🎯 <b>Target:</b> ${cfg.tg}</div>`;
+  if(!last){
+    if(cfg.auto){
+      // Sunday: checked automatically from rounds + duration
+      const r=sunRounds(k),d=sunDur(k),ok=cfg.auto(k);
+      h+=`<div class="phz-now">${ok?'✅':'⬜'} This session: ${r} round${r===1?'':'s'} in ${d} min${Z.dn[k]?'':' <span class="phz-mut">· counts when you mark the day complete</span>'}</div>`;
+    } else if(past){
+      // Tuesday / Thursday: self-report (form and tempo can't be measured)
+      const r=Z.pt&&Z.pt[k],hit=r&&r.p===p?r.hit:null;
+      h+=`<div class="phz-q">Did you hit the target this session?</div><div class="seg"><button class="${hit===true?'on':''}" aria-pressed="${hit===true}" onclick="phaseHit('${k}',${i},true)">✅ Hit it</button><button class="${hit===false?'on miss':''}" aria-pressed="${hit===false}" onclick="phaseHit('${k}',${i},false)">✖ Not yet</button></div>`;
+    }
+    const run=Math.min(2,hitRun(i));
+    h+=`<div class="phz-run" aria-label="${run} of 2 sessions in a row at target">In a row: <span class="dots">${run>=1?'●':'○'}${run>=2?'●':'○'}</span> ${run}/2</div>`;
+    if(run>=2){
+      const nx=c.pz.phases[p];
+      h+=`<div class="phz-ready">🚀 Two sessions in a row at target. Ready for <b>Phase ${p+1}: ${nx.n}</b>.<div class="phz-mut">${nx.d}</div></div><button class="phz-adv" onclick="advPhase(${i})">Move to Phase ${p+1}</button>`;
+    }
+  } else {
+    // Final phase: sequential load-step checklist
+    h+=`<div class="phz-q">Load steps · tick each off once it feels solid:</div>`;
+    cfg.steps.forEach((st,n)=>{
+      const id=c.pz.key+'_'+n,on=!!(Z.ls&&Z.ls[id]);
+      h+=`<div class="phz-st" role="checkbox" aria-checked="${on}" tabindex="0" onclick="togLS('${id}',${i},'${k}')"><span class="ck${on?' on':''}"></span><span>${n+1}. ${st}</span></div>`;
+    });
+  }
+  // Explainer: rules + every phase for this day, current one highlighted
+  h+=`<details class="prg phz-how"><summary>How progression works</summary><div class="prg-in">${R4}</div><div class="prg-in">${R2}</div>`;
+  c.pz.phases.forEach((q,n)=>{
+    h+=`<div class="prg-ph${n+1===p?' cur':''}"><div class="prg-n">Phase ${n+1}: ${q.n}${n+1===p?' · you are here':''}</div><ul><li><b>Target:</b> ${q.tg}</li><li>${q.d}</li></ul>${q.steps?`<ol>${q.steps.map(x=>`<li>${x}</li>`).join('')}</ol>`:''}</div>`;
+  });
+  return h+`</details></div>`;
+}
+function phaseHit(k,i,v){
+  hap('light');
+  if(!Z.pt)Z.pt={};
+  const p=curPh(SC[i]),r=Z.pt[k];
+  if(r&&r.p===p&&r.hit===v)delete Z.pt[k]; // tap again to clear
+  else Z.pt[k]={p,hit:v};
+  sv();refreshPhase(i,k);
+}
+function advPhase(i){
+  hap('heavy');
+  const c=SC[i],p=curPh(c),N=c.pz.phases.length;if(p>=N)return;
+  if(!Z.ph)Z.ph={};
+  Z.ph[c.pz.key]=p+1;
+  if(!Z.phLog)Z.phLog=[];
+  Z.phLog.push({day:c.pz.key,p:p+1,at:dk(td())});
+  sv();rW();
+  const nx=c.pz.phases[p];
+  showPR('🚀 Phase '+(p+1)+' Unlocked!',c.d+': '+nx.n+'. '+nx.d);
+}
+function setPh(key,v){
+  if(!Z.ph)Z.ph={};
+  Z.ph[key]=Number(v);sv();rW();
+}
+function togLS(id,i,k){
+  hap('light');
+  if(!Z.ls)Z.ls={};
+  if(Z.ls[id])delete Z.ls[id];else Z.ls[id]=dk(td());
+  sv();refreshPhase(i,k);
+}
+
+// ═══ PER-EXERCISE CHARTS ═══
+function chBtn(k,suf){return `<button class="chb" onclick="togChart('${k}','${suf}')" aria-label="Show progress chart">📊</button>`;}
+function chBox(k,suf,unit){return `<div class="chx" id="cx-${k}${suf}" data-u="${unit||(suf==='_rnd'?' rounds':'')}" hidden></div>`;}
+function togChart(k,suf){
+  hap('light');
+  const el=document.getElementById('cx-'+k+suf);if(!el)return;
+  if(!el.hidden){el.hidden=true;return;}
+  const s=series(suf),u=el.dataset.u;
+  const fmt=v=>suf==='_time'?fmtTime(v):(u==='s'?v+'s':v+u);
+  el.hidden=false;
+  if(s.length<2){el.innerHTML=`<div class="chx-empty">${s.length?'1 session logged ('+fmt(s[0].v)+'). ':''}Log 2+ sessions to see a chart.</div>`;return;}
+  const vals=s.map(x=>x.v),lo=Math.min(...vals),hi=Math.max(...vals);
+  const sd2=d=>new Date(d+'T00:00:00').toLocaleDateString('en-US',{month:'short',day:'numeric'});
+  el.innerHTML=`<div class="chx-top"><span>Latest: <b>${fmt(vals[vals.length-1])}</b></span><span>Low ${fmt(lo)} · High ${fmt(hi)}</span></div><div class="chx-c"><canvas role="img" aria-label="Progress chart, ${s.length} sessions"></canvas></div><div class="bw-range"><span>${sd2(s[0].d)}</span><span>${s.length} sessions</span><span>${sd2(s[s.length-1].d)}</span></div>`;
+  drawMini(el.querySelector('canvas'),vals);
+}
+function drawMini(canvas,vals){
+  const ctx=canvas.getContext('2d'),dpr=window.devicePixelRatio||1;
+  const rect=canvas.parentElement.getBoundingClientRect(),w=rect.width,ht=rect.height;
+  canvas.width=w*dpr;canvas.height=ht*dpr;canvas.style.width=w+'px';canvas.style.height=ht+'px';
+  ctx.scale(dpr,dpr);
+  const pad=6,mn=Math.min(...vals),mx=Math.max(...vals),rng=(mx-mn)||1;
+  const pts=vals.map((v,i)=>({x:pad+(i/(vals.length-1))*(w-pad*2),y:pad+(1-(v-mn)/rng)*(ht-pad*2)}));
+  const grad=ctx.createLinearGradient(0,0,0,ht);
+  grad.addColorStop(0,'rgba(74,158,255,.3)');grad.addColorStop(1,'rgba(74,158,255,0)');
+  ctx.beginPath();ctx.moveTo(pts[0].x,ht);pts.forEach(p=>ctx.lineTo(p.x,p.y));ctx.lineTo(pts[pts.length-1].x,ht);ctx.closePath();ctx.fillStyle=grad;ctx.fill();
+  ctx.beginPath();ctx.moveTo(pts[0].x,pts[0].y);pts.forEach(p=>ctx.lineTo(p.x,p.y));ctx.strokeStyle='#4a9eff';ctx.lineWidth=2;ctx.stroke();
+  pts.forEach(p=>{ctx.beginPath();ctx.arc(p.x,p.y,3,0,Math.PI*2);ctx.fillStyle='#4a9eff';ctx.fill();});
+}
+
 function tD(k){
   hap('heavy');
   const wasUndone=!!Z.dn[k];
-  if(Z.dn[k])delete Z.dn[k];else Z.dn[k]=Date.now();
+  const i=new Date(k+'T00:00:00').getDay();
+  if(Z.dn[k]){
+    delete Z.dn[k];
+    if(i===0&&Z.pt)delete Z.pt[k]; // Sunday's target result follows completion
+  } else {
+    Z.dn[k]=Date.now();
+    snapshotDay(k);
+    if(i===0&&SC[0].pz){if(!Z.pt)Z.pt={};Z.pt[k]={p:curPh(SC[0])};}
+  }
   sv();rS();rW();
-  if(!wasUndone){celebrateDay();setTimeout(()=>{checkBadges();checkPRs(k);checkGraduation();},500);}
+  if(!wasUndone){celebrateDay(k);setTimeout(()=>{checkBadges();checkPRs(k);checkGraduation();},500);}
 }
 function makeup(missedKey,fridayKey){
   hap('heavy');
   Z.dn[missedKey]=Date.now();
   Z.dn[fridayKey]=Date.now();
+  snapshotDay(missedKey);
+  if(new Date(missedKey+'T00:00:00').getDay()===0){if(!Z.pt)Z.pt={};Z.pt[missedKey]={p:curPh(SC[0])};}
   sv();rS();rW();
-  celebrateDay();setTimeout(()=>{checkBadges();checkGraduation();},500);
+  celebrateDay(fridayKey);setTimeout(()=>{checkBadges();checkGraduation();},500);
 }
-function cW(d){vw=Math.max(1,Math.min(26,vw+d));rW();}
+function cW(d){vw=Math.max(1,Math.min(NW,vw+d));rW();}
 
 function rC(){
   const bx=document.getElementById('cal'),s=sd();
   if(!s){bx.innerHTML='<div class="emp">Set a start date in Settings first</div>';return;}
-  const end=ad(s,TD),tk=dk(td());let h='',cur=new Date(s.getFullYear(),s.getMonth(),1);
+  const end=lastDay(),tk=dk(td());let h='',cur=new Date(s.getFullYear(),s.getMonth(),1);
   while(cur<=end){
     const mo=cur.getMonth(),yr=cur.getFullYear();
     h+=`<div class="cmt">${cur.toLocaleDateString('en-US',{month:'long',year:'numeric'})}</div><div class="cg">`;
@@ -670,12 +975,18 @@ function rC(){
 function rSt(){
   const s=sd();
   const curVal=Z.s||dk(td());
-  if(!Z.goals)Z.goals=[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}];
+  if(!Z.goals)Z.goals=defGoals();
   let goalHTML='';
   Z.goals.forEach((g,i)=>{
     goalHTML+=`<div class="sr" style="flex-wrap:wrap;gap:8px"><span class="sbl">Goal ${i+1}</span><div style="display:flex;gap:6px;align-items:center;flex-wrap:wrap"><input type="number" id="goal-lbs-${i}" value="${g.lbs}" inputmode="decimal" style="width:70px;background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;font-size:.9rem;text-align:center" placeholder="lbs"><span style="color:var(--muted);font-size:.85rem">lbs by</span><input type="date" id="goal-by-${i}" value="${g.by}" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:8px;font-size:.9rem;-webkit-appearance:none;appearance:none"><button class="sbt" onclick="saveGoal(${i})">Set</button></div></div>`;
   });
   goalHTML+=`<div class="sr"><span class="sbl">Add Goal</span><button class="sbt" onclick="addGoal()">+ New Goal</button></div>`;
+  // Manual phase override (normally you advance from the day card)
+  SC.forEach(c=>{
+    if(!c.pz)return;
+    const p=curPh(c);
+    goalHTML+=`<div class="sr"><label class="sbl" for="ph-${c.pz.key}">${c.d} Phase</label><select id="ph-${c.pz.key}" class="ph-sel" onchange="setPh('${c.pz.key}',this.value)">${c.pz.phases.map((q,n)=>`<option value="${n+1}"${n+1===p?' selected':''}>${n+1}: ${q.n}</option>`).join('')}</select></div>`;
+  });
   document.getElementById('set').innerHTML=`<div style="margin-top:18px">`+
     `<div class="sr" style="flex-wrap:wrap;gap:10px"><span class="sbl">Start Date</span><div style="display:flex;gap:8px;align-items:center"><input type="date" id="date-pick" value="${curVal}" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:10px 12px;font-size:1rem;-webkit-appearance:none;appearance:none;min-width:150px"><button class="sbt" onclick="applyDate()">Set</button></div></div>`+
     goalHTML+
@@ -765,14 +1076,69 @@ const QUOTES=[
   "It never gets easier. You just get stronger.",
   "Be stronger than your excuses.",
   "Success isn't given. It's earned. In the gym. On the track. In the grind.",
-  "The only person you are destined to become is the person you decide to be."
+  "The only person you are destined to become is the person you decide to be.",
+  // ── v2 additions ──
+  "Round 2 isn't a restart. It's a rematch.",
+  "You already know you can do six months. Now do it better.",
+  "Motivation gets you started. Habit gets you to May.",
+  "Small plates, big patience.",
+  "The kettlebell doesn't care how you feel. Lift it anyway.",
+  "One more rep is how every record starts.",
+  "Progress hides in the boring days. Keep showing up.",
+  "You don't rise to your goals. You fall to your habits. Build good ones.",
+  "Strong is a skill. You're practicing it.",
+  "The hardest lift is getting off the couch. Already done.",
+  "Consistency beats intensity when intensity takes the week off.",
+  "A slow rep with good form beats a fast rep with an excuse.",
+  "Every round you finish is a vote for who you're becoming.",
+  "Today's sweat is tomorrow's easy.",
+  "Rest is part of the program. So is coming back.",
+  "No one regrets the workout. Ever.",
+  "Your future self is watching. Give them something to brag about.",
+  "Breathe through your nose and trust the process.",
+  "Good days build strength. Bad days build grit.",
+  "The scale is one number. The mirror, the stairs, and your knees tell the rest.",
+  "Earn the weekend. Then earn Monday too.",
+  "Load the bar of your life one plate at a time.",
+  "You can't out-train a bad week, but you can start a good one today.",
+  "Showing up tired still counts. Showing up at all counts most.",
+  "Discipline is remembering what you want.",
+  "Hard now, proud later.",
+  "Two in a row. Then two more. That's the whole secret.",
+  "Grip it, rip it, recover, repeat.",
+  "The work is the reward. The results are the bonus.",
+  "Stronger than last week is the only comparison that matters.",
+  "Make the warm-up count. Make every rep count.",
+  "Don't wish for it. Rep for it.",
+  "Effort compounds. Keep depositing.",
+  "Champions are just people who kept their streak alive.",
+  "A tough set is just your body learning something new.",
+  "You've got 25 weeks. Spend them like they matter.",
+  "Iron sharpens iron. Today you sharpened you.",
+  "The beach run doesn't get easier. You get faster.",
+  "Pace yourself, then surprise yourself.",
+  "Some days you crush it. Some days you just finish. Both count.",
+  "Every drop of sweat is paid in full.",
+  "Quiet consistency makes loud results.",
+  "Fitness is a long game. You're winning it.",
+  "The streak is a promise you keep to yourself.",
+  "Heavier bell, same you. Stronger you."
 ];
-function rQuote(){return QUOTES[Math.floor(Math.random()*QUOTES.length)];}
+// Random pick that avoids repeating recent picks (remembers the last ~third of each list across app opens)
+function pick(name,arr){
+  let rec={};try{rec=JSON.parse(localStorage.getItem('wt_v4_recent'))||{};}catch(e){}
+  const avoid=new Set(rec[name]||[]),pool=arr.map((_,i)=>i).filter(i=>!avoid.has(i));
+  const i=(pool.length?pool:arr.map((_,i)=>i))[Math.floor(Math.random()*(pool.length||arr.length))];
+  rec[name]=[i,...(rec[name]||[])].slice(0,Math.max(1,Math.floor(arr.length/3)));
+  try{localStorage.setItem('wt_v4_recent',JSON.stringify(rec));}catch(e){}
+  return arr[i];
+}
+function rQuote(){return pick('q',QUOTES);}
 
 // ═══ BADGES ═══
 const BADGES=[
   {id:'first_blood',icon:'🩸',name:'First Blood',desc:'Complete your very first workout',check:()=>ttl()>=1},
-  {id:'week1',icon:'📅',name:'Week One Down',desc:'Complete 5 workouts in your first week',check:()=>ttl()>=5},
+  {id:'week1',icon:'📅',name:'Week One Down',desc:'Finish your first week (5+ workouts, through Saturday)',check:()=>weekOneDone()},
   {id:'streak3',icon:'🔥',name:'On Fire',desc:'Hit a 3-day streak',check:()=>streak()>=3},
   {id:'streak7',icon:'💥',name:'Unstoppable',desc:'Hit a 7-day streak (full week!)',check:()=>streak()>=7},
   {id:'streak14',icon:'⚡',name:'Two-Week Terror',desc:'14-day streak — you\'re a machine',check:()=>streak()>=14},
@@ -783,45 +1149,47 @@ const BADGES=[
   {id:'hundred',icon:'💯',name:'The Century Club',desc:'100 workouts — legendary status',check:()=>ttl()>=100},
   {id:'month1',icon:'🌙',name:'Month One',desc:'Survive the first month (4 weeks)',check:()=>{const s=sd();return s&&(td()-s)/864e5>=28;}},
   {id:'month3',icon:'🏔️',name:'Halfway There',desc:'Reach the 3-month mark',check:()=>{const s=sd();return s&&(td()-s)/864e5>=91;}},
-  {id:'month6',icon:'👑',name:'The Finisher',desc:'Complete the full 6-month program',check:()=>{const s=sd();return s&&(td()-s)/864e5>=182;}},
+  {id:'month6',icon:'👑',name:'The Finisher',desc:'Complete the full 6-month program',check:()=>finished()},
   {id:'sunday_5',icon:'🔥',name:'Burner Boss',desc:'Complete 5 Sunday Burner sessions',check:()=>countDay(0)>=5},
   {id:'tuesday_5',icon:'🏋️',name:'Strength Sage',desc:'Complete 5 Tuesday Strength sessions',check:()=>countDay(2)>=5},
   {id:'walk_10',icon:'🚶',name:'Road Warrior',desc:'Complete 10 walk days',check:()=>(countDay(1)+countDay(3)+countDay(6))>=10},
   {id:'weight_up',icon:'📈',name:'Level Up',desc:'Increase weight on any exercise',check:()=>anyWeightIncrease()},
   {id:'early_bird',icon:'🐦',name:'Early Bird',desc:'Complete a workout before 8am',check:()=>anyEarlyWorkout()},
   {id:'weekend_warrior',icon:'⚔️',name:'Weekend Warrior',desc:'Complete both Sat & Sun in same week',check:()=>anyFullWeekend()},
+  {id:'beat_r1_streak',icon:'🔗',name:'Streak Breaker',desc:`Beat your Round 1 best streak of ${R1.streak} days`,check:()=>(Z.bestStreak||0)>R1.streak},
+  {id:'beat_r1_days',icon:'📆',name:'Volume Record',desc:`Beat your Round 1 total of ${R1.days} days done`,check:()=>ttl()>R1.days},
   {id:'perfect_week',icon:'🌟',name:'Perfect Week',desc:'Complete every non-rest day in a week',check:()=>anyPerfectWeek()},
 ];
 
-function countDay(dow){const s=sd();if(!s)return 0;let n=0;for(let w=1;w<=26;w++){const d=ad(s,(w-1)*7+dow);if(Z.dn[dk(d)])n++;}return n;}
+function countDay(dow){const s=sd();if(!s)return 0;let n=0;for(let w=1;w<=NW;w++){const d=ad(s,(w-1)*7+dow);if(Z.dn[dk(d)])n++;}return n;}
+// Any exercise whose logged weight went up from one session to a later one
 function anyWeightIncrease(){
-  const s=sd();if(!s)return false;
-  for(let day=0;day<7;day++){
-    const sc=SC[day];
-    sc.ex.forEach((e,j)=>{if(!e.w)return;
-      for(let w=2;w<=26;w++){
-        const d1=ad(s,(w-2)*7+day),d2=ad(s,(w-1)*7+day);
-        const v1=Z.wt[dk(d1)+'_w'+j],v2=Z.wt[dk(d2)+'_w'+j];
-        if(v1&&v2&&Number(v2)>Number(v1))return true;
-      }
-    });
+  const by={};
+  for(const key in Z.wt){
+    const suf=key.slice(10);if(!suf.startsWith('_w_'))continue;
+    (by[suf]=by[suf]||[]).push({d:key.slice(0,10),v:Number(Z.wt[key])});
   }
-  // check via stored weights
-  const keys=Object.keys(Z.wt).filter(k=>k.includes('_w'));
-  const byEx={};
-  keys.forEach(k=>{const p=k.split('_w');if(!byEx[p[1]])byEx[p[1]]=[];byEx[p[1]].push({d:p[0],v:Number(Z.wt[k])});});
-  for(const ex in byEx){const vals=byEx[ex].sort((a,b)=>a.d.localeCompare(b.d));for(let i=1;i<vals.length;i++){if(vals[i].v>vals[i-1].v)return true;}}
+  for(const s in by){const v=by[s].sort((a,b)=>a.d.localeCompare(b.d));for(let i=1;i<v.length;i++)if(v[i].v>v[i-1].v)return true;}
   return false;
 }
 function anyEarlyWorkout(){for(const k in Z.dn){const t=Z.dn[k];if(typeof t==='number'){const d=new Date(t);if(d.getHours()<8)return true;}}return false;}
 function anyFullWeekend(){
   const s=sd();if(!s)return false;
-  for(let w=1;w<=26;w++){const sat=dk(ad(s,(w-1)*7+6)),sun=dk(ad(s,(w-1)*7));if(Z.dn[sat]&&Z.dn[sun])return true;}
+  for(let w=1;w<=NW;w++){const sat=dk(ad(s,(w-1)*7+6)),sun=dk(ad(s,(w-1)*7));if(Z.dn[sat]&&Z.dn[sun])return true;}
   return false;
+}
+// Week One Down: awarded at the END of week 1 — Saturday completed (or past) — with 5+ workouts that week.
+// (Used to be ttl()>=5, which fired mid-week, e.g. on a Friday make-up.)
+function weekOneDone(){
+  const s=sd();if(!s)return false;
+  const sat=ad(s,6);
+  if(!Z.dn[dk(sat)]&&td()<=sat)return false; // week not over yet
+  let n=0;for(let d=0;d<7;d++){if(Z.dn[dk(ad(s,d))])n++;}
+  return n>=5;
 }
 function anyPerfectWeek(){
   const s=sd();if(!s)return false;
-  for(let w=1;w<=26;w++){
+  for(let w=1;w<=NW;w++){
     let perfect=true;
     for(let d=0;d<7;d++){if(SC[d].t==='REST')continue;const key=dk(ad(s,(w-1)*7+d));if(!Z.dn[key]){perfect=false;break;}}
     if(perfect)return true;
@@ -838,7 +1206,11 @@ function checkBadges(){
       newBadge=b;
     }
   });
-  if(newBadge){sv();celebrate(newBadge);}
+  if(newBadge){
+    sv();
+    // Don't stomp on another celebration (e.g. graduation); the badge is still saved
+    if(!document.getElementById('cele').classList.contains('show'))celebrate(newBadge);
+  }
 }
 
 // ═══ CELEBRATIONS ═══
@@ -846,15 +1218,39 @@ const CELE_MSGS=[
   "You're absolutely crushing it!","Beast mode: ACTIVATED.","That's how champions are built!",
   "Nothing can stop you now!","You showed up and that's everything!","Pure dedication right there!",
   "The grind doesn't stop!","You're writing your comeback story!","Respect the process. You do.",
-  "Future you is so grateful right now!"
+  "Future you is so grateful right now!",
+  // ── v2 additions ──
+  "Another day in the books.","That's a W. Log it and own it.","Clean reps, clean conscience.",
+  "Streak fed. Goals closer.","You did the thing. Again.","That's what consistency looks like.",
+  "One step closer to 180.","Nobody's outworking you today.","Discipline: 1. Excuses: 0.",
+  "Your body just got the memo.","Built different. Built daily.","That one counts double in spirit.",
+  "Proof that you keep your promises.","Today's work is already paying interest.","Look at you, stacking wins.",
+  "Round 2 is going to be legendary.","The plan works because you work it.","You made the hard thing look routine.",
+  "Hydrate, stretch, feel proud.","Momentum is officially on your side.","That's how records get broken.",
+  "Strong today, stronger next week.","Locked in and leveling up.","Every session is a brick. You're building a house.",
+  "Your streak says thank you.","You just made Saturday-you very happy.","Quietly becoming unstoppable.",
+  "Effort logged. Results loading.","Respect. Earned, not given.","Another page in the comeback story."
 ];
+// Extra messages tailored to the day you just finished (Sun=0 … Sat=6)
+const DAY_MSGS=[
+  ["The Burner: burned.","AMRAP done. Every round was yours.","Sunday set the tone for the whole week.","Lift, then walk. Double duty done."],
+  ["Recovery walk done. Legs say thanks.","Zone 2 is where the engine gets built.","Easy pace, big payoff."],
+  ["Strength day conquered.","Four rounds, zero shortcuts.","Those pauses and tempos? That's where the strength lives.","Tuesday iron, handled."],
+  ["Recovery is training too. Nailed it.","Stretched, reset, ready for Thursday.","Calm body, sharp mind."],
+  ["EMOM: every minute owned.","Unilateral work, bilateral results.","20 minutes of focus. Impressive.","Thursday flow, locked in."],
+  ["Make-up day handled. No days left behind.","Rest earned, week protected."],
+  ["Aerobic engine: upgraded.","Sand, sweat, done.","Zone 2 king.","Weekend warrior energy."]
+];
+const DAY_TITLES=['Crushed It!','Beast Mode!','Unstoppable!','On Fire!',"Let's Go!",'Day Done!','Locked In!','Nailed It!',
+  'Big Day!','Another One!','Streak Alive!','Victory!','Built Different!','Clocked In!','Boom!','Heck Yes!','Leveled Up!','Too Easy!'];
+const DAY_ICONS=['🔥','💪','⚡','🚀','💥','🎯','👊','🏆','🥇','🦾','🏋️','🌟','✨','🙌','😤','🧱','📈','🎉','⛰️','🌊'];
 
 function celebrate(badge){
   launchFireworks();
   const el=document.getElementById('cele');
   document.getElementById('cele-icon').textContent=badge?badge.icon:'🎉';
   document.getElementById('cele-title').textContent=badge?'Badge Unlocked!':'Day Complete!';
-  document.getElementById('cele-msg').textContent=CELE_MSGS[Math.floor(Math.random()*CELE_MSGS.length)];
+  document.getElementById('cele-msg').textContent=pick('m',CELE_MSGS);
   document.getElementById('cele-quote').textContent='"'+rQuote()+'"';
   const bEl=document.getElementById('cele-badge');
   if(badge){bEl.style.display='inline-block';bEl.textContent=badge.icon+' '+badge.name;}
@@ -862,15 +1258,17 @@ function celebrate(badge){
   el.classList.add('show');
 }
 
-function celebrateDay(){
+// k = date key of the day just completed (optional) — enables day-specific messages
+function celebrateDay(k){
   // Random chance (30%) for a non-badge celebration on day complete
   if(Math.random()<0.3){
     launchFireworks();
     const el=document.getElementById('cele');
-    const icons=['🔥','💪','⚡','🚀','💥','🎯','👊','🏆'];
-    document.getElementById('cele-icon').textContent=icons[Math.floor(Math.random()*icons.length)];
-    document.getElementById('cele-title').textContent=['Crushed It!','Beast Mode!','Unstoppable!','On Fire!','Let\'s Go!'][Math.floor(Math.random()*5)];
-    document.getElementById('cele-msg').textContent=CELE_MSGS[Math.floor(Math.random()*CELE_MSGS.length)];
+    document.getElementById('cele-icon').textContent=pick('i',DAY_ICONS);
+    document.getElementById('cele-title').textContent=pick('t',DAY_TITLES);
+    // Half the time, use a message written for that specific day's workout
+    const dow=k?new Date(k+'T00:00:00').getDay():-1;
+    document.getElementById('cele-msg').textContent=(dow>=0&&Math.random()<0.5)?pick('d'+dow,DAY_MSGS[dow]):pick('m',CELE_MSGS);
     document.getElementById('cele-quote').textContent='"'+rQuote()+'"';
     document.getElementById('cele-badge').style.display='none';
     el.classList.add('show');
@@ -966,13 +1364,13 @@ function checkPRs(dateKey){
   // Best round count (Sunday AMRAP)
   if(dow===0){
     const cur=Number(Z.wt[dateKey+'_rnd']||0);
-    if(cur>0){let best=0;for(let w=1;w<=26;w++){const d=ad(s,(w-1)*7);const v=Number(Z.wt[dk(d)+'_rnd']||0);if(dk(d)!==dateKey&&v>best)best=v;}
+    if(cur>0){let best=0;for(let w=1;w<=NW;w++){const d=ad(s,(w-1)*7);const v=Number(Z.wt[dk(d)+'_rnd']||0);if(dk(d)!==dateKey&&v>best)best=v;}
     if(cur>best&&best>0){showPR('🔄 New Round PR!',cur+' rounds — your best ever!');return;}}
   }
   // Fastest Tuesday circuit
   if(dow===2){
     const cur=Number(Z.wt[dateKey+'_time']||0);
-    if(cur>0){let best=Infinity;for(let w=1;w<=26;w++){const d=ad(s,(w-1)*7+2);const v=Number(Z.wt[dk(d)+'_time']||0);if(dk(d)!==dateKey&&v>0&&v<best)best=v;}
+    if(cur>0){let best=Infinity;for(let w=1;w<=NW;w++){const d=ad(s,(w-1)*7+2);const v=Number(Z.wt[dk(d)+'_time']||0);if(dk(d)!==dateKey&&v>0&&v<best)best=v;}
     if(cur<best&&best<Infinity){showPR('⚡ New Speed PR!',fmtTime(cur)+' — your fastest circuit!');return;}}
   }
   // Lowest body weight
@@ -990,10 +1388,10 @@ function showPR(title,msg){
   el.classList.add('show');
 }
 
-// ═══ GRADUATION (Week 26) ═══
+// ═══ GRADUATION (end of Week 25 — last day completed or passed) ═══
 function checkGraduation(){
   const s=sd();if(!s)return;
-  if((td()-s)/864e5>=TD&&!Z.graduated){
+  if(finished()&&!Z.graduated){
     Z.graduated=true;sv();
     launchFireworks();setTimeout(()=>launchConfetti(),1500);
     const el=document.getElementById('cele');
@@ -1004,7 +1402,7 @@ function checkGraduation(){
     const bwLast=bwEnt.length?Number(Z.bw[bwEnt[bwEnt.length-1]]):null;
     const bwDiff=(bwFirst&&bwLast)?(bwLast-bwFirst).toFixed(1):null;
     const badges=Z.badges?BADGES.filter(b=>Z.badges[b.id]).length:0;
-    let msg=`6 months. ${ttl()} workouts. Best streak: ${Z.bestStreak||0} days.`;
+    let msg=`${NW} weeks. ${ttl()} workouts. Best streak: ${Z.bestStreak||0} days.`;
     if(bwDiff)msg+=` Weight: ${bwDiff>0?'+':''}${bwDiff}lbs.`;
     msg+=` ${badges} badges earned.`;
     document.getElementById('cele-msg').textContent=msg;
@@ -1042,9 +1440,14 @@ function renderAll(){rBW();rS();rW();rSt();rB();}
 if(!Z.badges)Z.badges={};
 if(!Z.bw)Z.bw={};
 if(!Z.bestStreak)Z.bestStreak=0;
-if(!Z.goals)Z.goals=[{lbs:190,by:'2026-07-04'},{lbs:180,by:'2026-10-31'}];
+if(!Z.goals)Z.goals=defGoals();
+if(!Z.ph)Z.ph={sun:1,tue:1,thu:1};
+if(!Z.pt)Z.pt={};
+if(!Z.ls)Z.ls={};
+if(!Z.sat)Z.sat={};
 renderAll();
-setTimeout(checkGraduation,1000);
+// Graduation first, then badges (fixes The Finisher never unlocking — badges used to be checked only on day complete)
+setTimeout(()=>{checkGraduation();checkBadges();},1000);
 </script>
 </body>
 </html>
