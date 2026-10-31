@@ -276,6 +276,27 @@ body.light .cele-card{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 </div>
 </div>
 <script>
+// ═══ BUILD / AUTO-UPDATE ═══
+// Bump BUILD on every publish. iPhone home-screen apps cache the page aggressively (GitHub Pages
+// sends max-age=600), so on open/return the app fetches the live page with no-store and, if the
+// BUILD differs, reloads via a cache-busting URL. Logged data (localStorage) is untouched.
+const BUILD='2026-10-31.3';
+function checkUpdate(){
+  if(location.protocol==='file:')return; // local preview: nothing to check
+  fetch(location.pathname+'?check='+Date.now(),{cache:'no-store'})
+    .then(r=>r.ok?r.text():'')
+    .then(t=>{
+      const m=t.match(/const BUILD='([^']+)'/);
+      if(!m||!newerBuild(m[1],BUILD))return;         // only move FORWARD (a stale CDN copy can't cause a loop)
+      const tried='wt_v4_upd_'+m[1];
+      if(sessionStorage.getItem(tried))return;        // one reload attempt per build per session
+      sessionStorage.setItem(tried,'1');
+      location.replace(location.pathname+'?v='+encodeURIComponent(m[1]));
+    }).catch(()=>{}); // offline: keep using the cached copy
+}
+// '2026-10-31.10' > '2026-10-31.3' — compare number by number, not as text
+function newerBuild(a,b){const x=a.split(/[-.]/).map(Number),y=b.split(/[-.]/).map(Number);for(let i=0;i<Math.max(x.length,y.length);i++){const d=(x[i]||0)-(y[i]||0);if(d)return d>0;}return false;}
+document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')checkUpdate();});
 // ═══ ROUTINE (6-Month Master Blueprint — see BLUEPRINT.md) ═══
 // Exercise fields: id = permanent key for logs/charts (never change it), eq = 'kb'|'db' weight list,
 // w = starting weight, rp = target reps (or seconds) — the rep counter starts here every session,
@@ -981,6 +1002,7 @@ function rSt(){
     `<div class="sr" style="flex-wrap:wrap;gap:10px"><span class="sbl">Start Date</span><div style="display:flex;gap:8px;align-items:center"><input type="date" id="date-pick" value="${curVal}" style="background:var(--card2);border:1px solid var(--border);border-radius:8px;color:var(--text);padding:10px 12px;font-size:1rem;-webkit-appearance:none;appearance:none;min-width:150px"><button class="sbt" onclick="applyDate()">Set</button></div></div>`+
     goalHTML+
     `<div class="sr"><span class="sbl">Export Data</span><button class="sbt" onclick="xD()">Download JSON</button></div>`+
+    `<div class="sr"><span class="sbl">App Version</span><span style="color:var(--muted);font-size:.85rem">${BUILD}</span></div>`+
     `<div class="sr"><span class="sbl">Reset All Data</span><button class="sbt dg" onclick="rD()">Reset</button></div></div>`;
 }
 
@@ -1438,6 +1460,7 @@ if(!Z.sat)Z.sat={};
 renderAll();
 // Graduation first, then badges (fixes The Finisher never unlocking — badges used to be checked only on day complete)
 setTimeout(()=>{checkGraduation();checkBadges();},1000);
+checkUpdate(); // pick up new versions without reinstalling the home-screen app
 </script>
 </body>
 </html>
