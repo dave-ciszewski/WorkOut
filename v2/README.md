@@ -30,6 +30,10 @@ Lives in the `v2/` folder, so on GitHub Pages it will be at `https://dave-ciszew
 - **Bi-weekly milestone banner removed.**
 - **Fix:** The Finisher badge now unlocks (badges are checked on app open too).
 
+- **Phone layout:** each exercise shows its name and form cue, then a compact controls row: **REPS** (or Reps / arm, Steps / side, Pulls total, Time) and **WEIGHT** side by side. The rep count appears only in the counter.
+- **Routine updates (Oct 31):** Sunday KB Swing Gorilla Deadlift + post-AMRAP KB Suitcase Carry; Tuesday KB Goblet Squat Curl, KB Deadlift to High Pull, Front Plank (R1 & 3) / Side Plank (R2 & 4); Thursday 4 rounds (5 in Phase 3) with a Minute 5 rest row; Saturday gym Option C stair climber; warm-up on lifting days.
+- **Auto-update:** the app checks for a newer `BUILD` on open and reloads itself (iPhone home-screen apps otherwise keep a cached copy). Current build shown in Settings → App Version. **Bump `BUILD` on every publish.**
+
 ## Program dates and goals
 
 - **25 weeks:** Sunday Nov 8, 2026 → Saturday May 1, 2027 (`START_DEF`, `TD=175`).
