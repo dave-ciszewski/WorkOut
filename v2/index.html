@@ -131,10 +131,13 @@ body.light .sl2{border-color:rgba(37,99,235,.4)}
 .wu summary{cursor:pointer;font-weight:700;color:var(--orange);padding:4px 0}
 .wu ol{padding-left:22px;margin:6px 0 4px}
 .wu li{margin-bottom:2px}
-/* Rep counter under weighted exercises */
-.rps{display:flex;align-items:center;gap:10px;margin-top:8px}
-.rps-l{font-size:.75rem;color:var(--muted);font-weight:600;min-width:44px}
-.rps .wv{min-width:44px}
+/* Exercise controls row (under the name): compact Reps + Weight steppers side by side */
+.ctl{display:flex;flex-wrap:wrap;gap:8px 14px;margin-top:8px}
+.xg{display:flex;flex-direction:column;gap:3px}
+.xg-l{font-size:.68rem;color:var(--muted);font-weight:700;text-transform:uppercase;letter-spacing:.4px}
+.ctl .wb{width:32px;height:32px;font-size:1.05rem}
+.ctl .wv{min-width:42px;height:32px;font-size:.85rem}
+.ctl .wv.tap{min-width:52px}
 .wv.below{color:var(--orange)}
 /* Segmented toggle (Saturday Beach/Gym, target Hit/Not yet) */
 .seg{display:flex;gap:0;margin:0 0 12px;border:1px solid #444;border-radius:10px;overflow:hidden}
@@ -280,7 +283,7 @@ body.light .cele-card{background:#fff;box-shadow:0 20px 60px rgba(0,0,0,.2)}
 // Bump BUILD on every publish. iPhone home-screen apps cache the page aggressively (GitHub Pages
 // sends max-age=600), so on open/return the app fetches the live page with no-store and, if the
 // BUILD differs, reloads via a cache-busting URL. Logged data (localStorage) is untouched.
-const BUILD='2026-10-31.3';
+const BUILD='2026-10-31.4';
 function checkUpdate(){
   if(location.protocol==='file:')return; // local preview: nothing to check
   fetch(location.pathname+'?check='+Date.now(),{cache:'no-store'})
@@ -751,11 +754,15 @@ function rW(){
         const repCtl=e.rp?`<div class="wb" onclick="adjRep('${k}','${e.id}',-${rpStep})" aria-label="Less">−</div><div class="wv${reps<tgt?' below':''}" id="${rk}">${fmtRep(e,reps)}</div><div class="wb" onclick="adjRep('${k}','${e.id}',${rpStep})" aria-label="More">+</div>`:'';
         const cue=e.rp&&!e.w?e.r:lbl; // label under the name = form cue only (no rep numbers)
         h+=`<div class="er"><div class="ck${on?' on':''}" onclick="tE('${ek}',this)"></div><div class="ei"><div class="en">${e.n}${e.vid?` <a href="https://www.youtube.com/results?search_query=${e.vid}" target="_blank" rel="noopener" onclick="event.stopPropagation()" style="text-decoration:none;font-size:.8rem;vertical-align:middle" aria-label="Form video">▶️</a>`:''}${chSuf?' '+chBtn(k,chSuf):''}</div>${cue?`<div class="ep">${cue}</div>`:''}`;
-        // Counter sits under the name for every move (Reps / Steps / Pulls / Time); weight stays on the right
-        if(e.rp)h+=`<div class="rps"><span class="rps-l">${e.rl!=null?e.rl:(rpUnit==='sec'?'Time':'Reps')}${e.ru?' '+e.ru:''}</span><div class="ws">${repCtl}</div></div>`;
-        h+=`</div>`;
-        if(e.w)h+=`<div class="ws"><div class="wb" onclick="adj('${k}','${e.id}',-1)" aria-label="Lighter">−</div><div class="wv tap" id="${wk}" onclick="setWt('${k}','${e.id}')" title="Tap to type a weight">${cur}lbs</div><div class="wb" onclick="adj('${k}','${e.id}',1)" aria-label="Heavier">+</div></div>`;
-        h+=`</div>`;
+        // Controls row under the name: [Reps − n +] [Weight − lbs +], each with a small label above.
+        // (Keeps the name full-width on a phone instead of squeezing two steppers beside it.)
+        if(e.rp||e.w){
+          h+=`<div class="ctl">`;
+          if(e.rp)h+=`<div class="xg"><span class="xg-l">${e.rl!=null?e.rl:(rpUnit==='sec'?'Time':'Reps')}${e.ru?' '+e.ru:''}</span><div class="ws">${repCtl}</div></div>`;
+          if(e.w)h+=`<div class="xg"><span class="xg-l">Weight</span><div class="ws"><div class="wb" onclick="adj('${k}','${e.id}',-1)" aria-label="Lighter">−</div><div class="wv tap" id="${wk}" onclick="setWt('${k}','${e.id}')" title="Tap to type a weight">${cur}lbs</div><div class="wb" onclick="adj('${k}','${e.id}',1)" aria-label="Heavier">+</div></div></div>`;
+          h+=`</div>`;
+        }
+        h+=`</div></div>`;
         if(chSuf)h+=chBox(k,chSuf,e.rp&&rpUnit==='sec'?'s':(e.w?' lbs':' reps'));
       });
       if(c.rest)h+=`<div class="er rest-row"><div class="rest-ic" aria-hidden="true">⏸️</div><div class="ei"><div class="en">${c.rest.n}</div><div class="ep">${c.rest.d}</div></div><div class="rest-t">60s</div></div>`;
