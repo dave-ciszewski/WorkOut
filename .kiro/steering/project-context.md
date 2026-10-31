@@ -14,7 +14,7 @@ inclusion: auto
 - Single file: `index.html` — no frameworks, no build tools, no dependencies
 - All CSS inline in `<style>`, all JS inline in `<script>`
 - Data stored in browser localStorage (key: `wt_v3`)
-- State shape: `{s: startDate, dn: completedDays, ck: exerciseChecks, wt: weights/rounds/durations/reps, bw: bodyWeightLog, badges: earnedBadges, bestStreak: number, graduated: bool}`
+- State shape: `{s: startDate, dn: completedDays, ck: exerciseChecks, wt: weights/rounds/durations/reps, bw: bodyWeightLog, badges: earnedBadges, bestStreak: number, graduated: bool, goals: [{lbs, by}]}`
 
 ## Theme
 - Default: OLED dark (#000 background, #1a1a1a cards, #f5f5f5 text)
@@ -41,33 +41,46 @@ inclusion: auto
 - All weights use 5lb increment steppers
 - Push-ups: rep stepper (default 12, increment 1)
 - Plank: seconds stepper (default 60, increment 10)
+- All exercises have YouTube search links (▶️ icon) for form tutorials
+
+## Goal Weights
+- Goal 1: 190lbs by July 4, 2026
+- Goal 2: 180lbs by October 31, 2026
+- Shown in body weight expanded section with progress bars
+- Editable in Settings, can add new goals
+- Progress calculated from first logged weight to target
 
 ## Bi-Weekly Progressions (shown as milestone notes)
 Weeks 2,4,6,8,10,12,14,16,18,20,22,24 each have a specific progression note displayed when viewing that week or later.
 
-## Features Built
+## Features Built (27 total)
 1. **Stats bar** — 4 stats: Current Streak (orange), Best Streak (red, persists forever), Days Done (green), Current Week (blue)
-2. **Body weight tracker** — Tap to expand, log weight, shows delta from day 1, mini line chart with gradient fill
-3. **6-month progress bar** — Percentage based on elapsed days from start date
-4. **Week navigator** — Browse weeks 1-26 with arrow buttons
-5. **Day cards** — Expand/collapse, today auto-opens, color-coded badges per workout type
-6. **Exercise checkboxes** — 32px tap targets, green when checked
-7. **Weight steppers** — ±5lb per exercise, remembers last week's weight as placeholder
-8. **Rep/time steppers** — For bodyweight exercises (push-ups by 1, plank by 10s)
-9. **Round counter** — Sunday only, shows last week's count for comparison
-10. **Duration stepper** — Sunday and Thursday, 5min increments, 5-60min range
-11. **Circuit timer** — Tuesday only, start/stop/reset stopwatch, shows last week's time
-12. **Friday make-up** — Lists missed Sun-Thu days as buttons, credits both days on tap
-13. **Calendar view** — Monthly grid, green=done, red=missed, gray=rest, blue outline=today
-14. **Badges tab (🏆)** — 20 hidden badges, only earned ones shown (true easter eggs)
-15. **Celebrations** — 30% random chance of fireworks + motivational quote on day complete
-16. **Badge unlock modal** — Fireworks + badge reveal when earned
-17. **Confetti rain for PRs** — Different from fireworks, triggers on: new best round count, fastest Tuesday time, new lowest body weight
-18. **Graduation screen** — At day 182, fireworks + confetti + full stats summary (only once)
-19. **Dark/light mode** — Toggle in header, persisted in localStorage
-20. **Settings** — Visible date picker for start date (iOS-friendly), export JSON, reset data
-21. **20 motivational quotes** — Randomly shown in celebrations
-22. **Walk rows** — Checkable with HR zone info
+2. **Body weight tracker** — Tap header to expand, log weight, shows delta from day 1, mini line chart with gradient fill
+3. **Goal weight milestones** — Two goals with target dates, progress bars (green=on track, orange=past due), editable in Settings, can add more
+4. **6-month progress bar** — Percentage based on elapsed days from start date
+5. **Week navigator** — Browse weeks 1-26 with arrow buttons
+6. **Day cards** — Expand/collapse, today auto-opens, color-coded badges per workout type
+7. **Exercise checkboxes** — 32px tap targets, green when checked
+8. **Weight steppers** — ±5lb per exercise, remembers last week's weight as placeholder
+9. **Rep stepper** — Push-ups: default 12, increment by 1
+10. **Time stepper** — Plank: default 60s, increment by 10s, displays as Xm Xs
+11. **Round counter** — Sunday only, shows last week's count for comparison
+12. **Duration stepper** — Sunday and Thursday, 5min increments, 5-60min range, default 20min
+13. **Circuit timer** — Tuesday only, start/stop/reset stopwatch, shows last week's time
+14. **Friday make-up** — Lists missed Sun-Thu days as buttons, credits both days on tap
+15. **Calendar view** — Monthly grid, green=done, red=missed, gray=rest, blue outline=today
+16. **Badges tab (🏆)** — 20 hidden badges, only earned ones shown (true easter eggs)
+17. **Celebrations** — 30% random chance of fireworks + motivational quote on day complete
+18. **Badge unlock modal** — Fireworks + badge reveal when earned
+19. **Confetti rain for PRs** — Different from fireworks, triggers on: new best round count, fastest Tuesday time, new lowest body weight
+20. **Graduation screen** — At day 182, fireworks + confetti + full stats summary (only once)
+21. **Dark/light mode** — Toggle in header, persisted in localStorage
+22. **Settings** — Visible date picker (iOS-friendly), goal weight editors with add/edit, export JSON, reset data
+23. **20 motivational quotes** — Randomly shown in celebrations
+24. **Walk rows** — Checkable with HR zone info
+25. **YouTube exercise links** — ▶️ icon next to each exercise name, opens YouTube search for form tutorials
+26. **Haptic feedback** — Light tap on steppers/checkboxes, heavy tap on day complete/makeup buttons
+27. **Git integration** — Repo connected, pushes work from workspace via `git push origin main`
 
 ## 20 Badges
 first_blood, week1, streak3, streak7, streak14, streak30, ten_done, twentyfive, fifty, hundred, month1, month3, month6, sunday_5, tuesday_5, walk_10, weight_up, early_bird, weekend_warrior, perfect_week
@@ -82,13 +95,57 @@ first_blood, week1, streak3, streak7, streak14, streak30, ten_done, twentyfive, 
 - `drawBWChart` uses hardcoded color `#4a9eff` instead of CSS variable (canvas limitation)
 - Haptic feedback added to all interactive elements (light tap for steppers/checkboxes, heavy tap for day complete/makeup). Uses Vibration API + AudioContext fallback, but iOS Safari support is limited.
 - iOS Safari quirks: hidden date inputs don't trigger picker, parent onclick handlers steal focus from child inputs
+- Stepper functions (adj, adjR, adjDur, adjRep) must NOT call rW() or the open day card will collapse. They update DOM elements directly.
+- To force refresh on iPhone: open URL directly in Safari, or clear Safari cache (localStorage data is preserved)
+
+## Session Oct 30, 2026 — Revisit / Round 2 (PAUSED, resume here)
+User goal: update + republish his version, then build a generic version for other users.
+
+Environment: git is at `C:\Users\vcisdavi\AppData\Local\Programs\Git\cmd` and is NOT on PATH in the agent shell. Prefix commands with `$env:Path = "$env:LOCALAPPDATA\Programs\Git\cmd;$env:Path";`. Local main == origin/main (last commit a6df0b4, goal weights).
+
+Data export: `workout-data Oct 30 2026.json` in workspace root (gitignored — contains personal body weight; never commit). Note: iPhone home-screen app and Safari have SEPARATE localStorage — export from whichever he logs in.
+
+Key wt keys: `{date}_w{i}` weight, `_r{i}` reps/seconds, `_rnd` Sunday rounds, `_time` Tuesday seconds, `_dur` duration min. Exercise index i = position in SC[day].ex.
+
+Findings from 6 months of data (Apr 26 – Oct 24, 2026):
+- 135 days completed (incl. 11 Friday make-ups), best streak 91. Strong wks 5–19; dropped off from early Sept; last completed day Oct 17.
+- Sunday rounds 3 → 4 (Aug on); often extended to 25–40 min. Wk14 goal (5 rounds) not met.
+- Tuesday time: 31:18 first, best 23:57 (Aug 4), recent 24–30 min.
+- Body weight 196.2 → low 190.0 (Sep 6) → 193.2 (Sep 27, last log). Goal 190 hit late; 180 not reached.
+- Actual working weights he re-dialed every week: Push-ups 10, DB Thrusters 15, DB Shoulder Press 15, Renegade Rows 10, Step-Ups 15, Curl to Press 10, Russian Twists 15. KB moves stayed 25, Plank 60.
+
+BUGS found:
+1. Steppers do NOT carry forward — gWt() falls back to the hardcoded default each week; `lw()` exists but is unused. README claims carry-forward. Fix: default to most recent prior logged value.
+2. `month6` (The Finisher) badge never awarded — checkBadges() only runs on tD/makeup, while checkGraduation runs on init. Fix: run checkBadges on init too.
+
+Planned for his version (pending his routine changes): carry-forward fix, Finisher badge fix, "Start Round 2" (new start date/goals, keep history/badges/best streak), update exercise defaults to his actual weights, possibly the per-exercise graphs.
+
+Open questions for other-users version: audience (friends on same plan vs anyone), what's configurable (start date, equipment weights, goals, exercises/schedule?), first-launch setup screen, hosting (recommended: subfolder `/app/` on main; alt: separate repo). MUST use a different localStorage key (same github.io origin).
+
+UPDATE (end of Oct 30 session): Routine changes are DONE — but in a NEW app, not v1.
+- User decided to KEEP v1 unchanged (root `index.html` restored to commit a6df0b4) and build a new version.
+- New app: `v2/index.html` (copy of v1 with new routine). localStorage key `wt_v4` (fresh start, never touches `wt_v3`). Title "Workout Tracker v2", export file `workout-data-v2.json`.
+- Routine source of truth: `v2/BLUEPRINT.md` (6-Month Master Workout Blueprint). Full session notes + earlier per-day drafts: `Session Notes Oct 30 2026.md`.
+- v2 schedule: Sun Burner (Deadlifts, Push-ups 10, Snatches, Devil's Press 10 lb) + walk; Mon Recovery Walk; Tue Strength (Goblet Squat, 2-Hand High Pulls, DB Floor Press 15 lb, Swings, Plank); Wed Restorative/Yin Yoga (replaces walk, badge class db-y teal); Thu 25m Unilateral & Flow EMOM (Rev Lunge Pass-Through, SA KB Row, DB Push Press 15, Plank Pull-Throughs 10; duration default 25); Fri rest; Sat Beach Run + Gym Backup (`alt` box).
+- v2 new SC fields: `nt` (note under header), `pr` (collapsible progression box: title, intro, phases[{n, items, steps, stTitle, ol, post}]), `wx` (walk execution line), `wi` (walk icon), `alt` (backup cardio box). Shared `R4` constant = Rule of 4 text. PG milestones contain HTML (<b>).
+- Nothing committed or pushed yet. v2 will be at /WorkOut/v2/ once pushed.
+
+Next step when resuming: USABILITY updates for v2 (see "Tomorrow" list in `Session Notes Oct 30 2026.md`): finer weight steps (1–2 lb), carry-forward fix, key weights by exercise not index, Finisher badge fix, decide on Wednesday Yoga Framework box, review default goals, then commit + push.
+
+## Future Features (Revisit Later)
+- Exercise progress graphs — mini sparkline charts per exercise showing weight/reps over time. Add after 4-6 weeks when there's enough data to be meaningful. Plan: small 📊 icon next to each exercise that expands a chart on tap.
 
 ## Files
-- `index.html` — The entire app (~750 lines)
+- `index.html` — The entire app (v1, original routine — keep unchanged)
+- `v2/index.html` — v2 app with the Master Blueprint routine (key `wt_v4`)
+- `v2/BLUEPRINT.md` — v2 routine source of truth
+- `v2/README.md` — v2 overview
+- `Session Notes Oct 30 2026.md` — Oct 30 session notes, decisions, drafts, usability to-do
 - `README.md` — Feature overview and setup instructions
 - `.gitignore` — OS/editor/node ignores
+- `.kiro/steering/project-context.md` — This file (auto-loaded every session)
 
 ## Hosting
 - GitHub Pages from `main` branch, root folder
-- Repo must be public (free GitHub account)
+- Repo is public (free GitHub account requirement for Pages)
 - User adds to iPhone home screen via Safari Share → Add to Home Screen

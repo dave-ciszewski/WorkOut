@@ -13,3 +13,6 @@ Desktop.ini
 # Node (in case you ever add tooling)
 node_modules/
 package-lock.json
+
+# Personal workout data exports (body weight, logs) - never publish
+workout-data*.json
