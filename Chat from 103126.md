@@ -206,3 +206,161 @@ Tested in headless Microsoft Edge (Node isn't installed): 41 checks passed, no J
 - **Routine source of truth:** `v2/BLUEPRINT.md`
 - **To do before Nov 8:** Settings → Reset All Data on the phone (clears test taps)
 - **Publishing rule:** bump `const BUILD` in `v2/index.html` on every push so phones auto-update
+
+---
+
+# Part 2 — Susan's App (later on Oct 31)
+
+**Outcome:** Susan's Workout Tracker is live at https://dave-ciszewski.github.io/WorkOut/susan/ (build `2026-10-31.1`, commit `698e0ca`). Dave's v1 and v2 are unchanged. Dave emailed Susan the install instructions.
+
+## 13. Planning Susan's version
+
+**Dave:** Okay now we need to make a different version of the app for Susan - this will be the Susan version. Different. This app should have the functionality of v2 - with everything we did, but with v1's exercises. Also Susan is smaller than me, so KBs will be 15 and DBs will be less too between 5,8,10. Is that something you think you can do?
+
+**Kiro:** Yes. Proposed a separate app in `susan/` with its own storage key: v2's features (exercise IDs, carry-forward weights, rep counters, phases, charts, goals, badges, messages, auto-update, phone layout) plus v1's routine. Dave-specific pieces dropped (Round 1 records, his goals, v2 routine). Proposed starting weights: all KB moves 15 lb; Thrusters / Shoulder Press / Renegade Rows 8 lb; Step-Ups 10 lb; Curl to Press 5 lb; Russian Twists 5 lb. Weight steps DB 5/8/10/12/15, KB 10/15/20/25. Asked 6 questions: dates, goals, phase targets, warm-up, lower reps, app name.
+
+**Dave:** 1 - yes, make it the same / 2 - let her set it in the settings / 3 - I like what you got there. Let's use that. / 4 - yep include the warms ups / 5 - yes, lower them / 6 - sure
+
+## 14. Building Susan's app
+
+**Kiro:** Copied v2 to `susan/index.html` and replaced the routine:
+- **Sun – The Burner (20 min AMRAP):** KB Deadlifts 12 · 15 lb, Push-ups 8 (knees fine), KB Snatches 6 / arm · 15 lb, DB Thrusters 10 · 8 lb
+- **Tue – Strength (4 rounds):** KB Goblet Squats 10 · 15 lb, DB Shoulder Press 8 · 8 lb, KB Swings 15 · 15 lb, DB Renegade Rows 8 / side · 8 lb, Plank 30s
+- **Thu – Unilateral (20 min EMOM):** Step-Ups 8 / leg · 10 lb, KB Row 8 / arm · 15 lb, DB Curl to Press 8 · 5 lb, Russian Twists 16 · 5 lb
+- **Phases:** Foundation (Sun 3 rounds / 20 min, checked automatically) → Volume Builder (+2 reps on every move, Sun 4 rounds) → Strength Step (one exercise at a time to the next weight, e.g. 15 → 20 lb KB, 8 → 10 lb DB). Two in a row to advance.
+- Same dates (Nov 8 → May 1, 25 weeks), warm-up on lifting days, no default goals ("Add Goal" fills in 10 lb under her latest weigh-in, due May 1), title "Susan's Workout Tracker", storage key `wt_susan_v1`, own build numbering.
+- Removed Dave-specific text from messages (180 lb, Round 2, beach run, yoga).
+- 27 checks passed in headless Edge. Wrote `susan/ROUTINE.md` and `susan/README.md`.
+
+**Dave:** let me see it first
+
+**Kiro:** Opened it in Edge for preview (nothing pushed).
+
+## 15. Cardio machines and Bambi's walks
+
+**Dave:** Okay good - Now Susan walks the dog a couple times a day and she wants to do elipitical and stairmaster - let's build that into the program for here. Can a dog walking work?
+
+**Kiro:** Yes — dog walks are great daily low-intensity movement but stop-and-go, so they're a bonus layer on top of real cardio. Proposed: a daily dog-walk tracker on every day (doesn't affect streaks), an Elliptical | StairMaster | Walk toggle on cardio days, and StairMaster minutes that build with her phases. Asked about the split, Wednesday, and what to track.
+
+**Dave:** 1 Let's do stairmaster twice / 2 Wednesday should be dog walk or just a walk in general / 3 you could track the minutes of morning walk and afternoon walk
+
+**Kiro:** Built it: Sunday after the Burner = 30 min Elliptical; Monday and Saturday = StairMaster (20 → 30 → 40 min with her Sunday phase); each has the machine toggle. Wednesday = 30–45 min walk ("a dog walk counts"). Daily dog-walk box on every day with Morning / Afternoon minute counters (5-min steps), total, 📊 chart, and badges for 50 and 200 walks.
+
+**Dave:** bring it up
+
+**Kiro:** Opened it in Edge.
+
+**Dave:** Can you have it say Walk/Treadmill
+
+**Kiro:** Third option renamed "Walk/Treadmill" ("Min Incline Walk / Treadmill"); shrank the 3-button toggle text slightly so it fits on an iPhone.
+
+**Dave:** Can you move Saturday to Friday and make Saturday the make up/rest day?
+
+**Kiro:** Friday = StairMaster cardio; Saturday = Rest / Make-up (lists missed workouts Sun–Fri, credits both days). Updated streak logic, Road Warrior (Mon/Wed/Fri), Weekend Warrior (Fri + Sun), Week One Down (ends Friday), and program finish (Fri Apr 30 counts). 15 checks passed.
+
+**Dave:** Good - should we give any guidance on how long th dog walks should be?
+
+**Kiro:** Suggested 20–30 min each walk, 45 min a day total; easy pace fine; keep easy on lifting days; one walk can be Wednesday's; longer relaxed walk on Saturday. Proposed a "25 / 45 min" progress display and a "Daily Dose" badge.
+
+**Dave:** yeah - add it
+
+**Kiro:** Added the guidance line, "N / 45 min" total that turns green with ✅ at 45, and **Daily Dose 🐶** (45 min on 30 days). Target is one setting (`DOG_GOAL`).
+
+**Dave:** The dog is named Bambi so you can say Bambi walks
+
+**Kiro:** Renamed to **Bambi Walks** everywhere ("let Bambi sniff", "A Bambi walk counts"). Badges: **Bambi's Best Friend 🐾** (50 walks — avoided "Good Girl/Boy" since Bambi's gender wasn't known), **Pack Leader 🐕** (200), **Daily Dose 🐶**.
+
+## 16. "Suzie" personalization
+
+**Dave:** How about some personalized motiviation for Susan - Call her Suzie in the motivation/badges
+
+**Kiro:** Added 10 Suzie titles (~half of celebrations, e.g. "Way to Go, Suzie!", "Suzie Strong!"), 22 Suzie / Bambi messages (~40%, e.g. "Suzie, consistency is your superpower.", "Bambi's proud of you, Suzie. 🐾"), badge pop-up "Badge Unlocked, Suzie!", graduation "YOU GRADUATED, SUZIE!". Renamed badges: 🌱 Suzie Starts Strong, 🔥 Suzie the Burner Boss, 🏋️ Suzie Strong, 👑 Queen Suzie. Fixed two badge descriptions for her schedule.
+
+## 17. iPhone check and launch
+
+**Dave:** Make sure this is going to render correctly on a iphone - remember we had problems last time
+
+**Kiro:** Audited at 320 / 375 / 390 / 430px: every day in all 3 phases, all cardio options, charts, all tabs (every badge earned), and pop-ups — checking for overflow, clipped text, overlapping controls, header collisions, and tap targets. Fixed: Phase 3 load-step checkboxes 26 → 32px; all inputs set to 16px (iOS Safari zooms on smaller fields); "6-Month Progress" → "25-Week Progress". All four widths clean, no errors; screenshots reviewed. Noted the tests run in Edge (Chromium), so a real-phone look is the final check.
+
+**Dave:** yes
+
+**Kiro:** Committed and pushed. Confirmed live at `/WorkOut/susan/` (build `2026-10-31.1`) and v2 still Dave's.
+
+**Dave:** create an email for her and I'll send it - copy/paste
+
+**Kiro:** Wrote the email (below).
+
+**Dave:** great - sent
+
+**Dave:** yes - let's log all of this.
+
+**Kiro:** Logged this section and pushed.
+
+### The email Dave sent
+
+```
+Subject: Your new workout app is ready, Suzie! 💪
+
+Hi Suzie,
+
+I built you your own workout tracker app! It's set up just for you, with lighter weights, your own program, and even a tracker for Bambi's walks. 🐾
+
+HOW TO INSTALL IT (takes 1 minute)
+1. On your iPhone, open this link in Safari (it has to be Safari):
+   https://dave-ciszewski.github.io/WorkOut/susan/
+2. Tap the Share button (the square with the arrow pointing up).
+3. Scroll down and tap "Add to Home Screen," then tap "Add."
+4. Open it from your home screen from now on, like a regular app.
+
+YOUR PROGRAM
+25 weeks: Sunday, Nov 8 through Saturday, May 1.
+
+- Sunday: "The Burner," a 20-minute circuit (do as many rounds as you can), then 30 minutes on the elliptical
+- Monday: StairMaster
+- Tuesday: Strength, 4 rounds
+- Wednesday: 30–45 minute walk (a Bambi walk counts!)
+- Thursday: 20-minute circuit, switching exercises every minute
+- Friday: StairMaster
+- Saturday: Rest, or make up a missed workout
+
+On cardio days you can switch between Elliptical, StairMaster, or Walk/Treadmill with one tap.
+
+HOW IT WORKS
+- Warm up first. Sunday, Tuesday, and Thursday start with a 6-move warm-up (about 6 minutes). Tap ▶️ next to any exercise to see a how-to video.
+- Use − and + to change your reps and weights. Weights start at 15 lb kettlebells and 5–10 lb dumbbells. Tap a weight to type in a different number.
+- Check off each exercise, then tap "Mark Day Complete" at the bottom.
+- You'll level up as you go. There are 3 phases, and when you hit your target two workouts in a row, the app will offer to move you up. Tap "How progression works" on any workout day to see the whole plan.
+- Log Bambi's walks every day in the green box: morning and afternoon minutes. Aim for about 45 minutes a day total. It's a bonus, so it never affects your streak.
+- Tap 📊 next to any exercise to see a chart of your progress.
+- Badges unlock as you go. There are some surprises in there, including a few with your name on them.
+
+BEFORE NOV 8
+- Go to Settings (bottom right) and tap "Add Goal" to set your weight goal and target date. You can add more than one.
+- Feel free to tap around and explore. Then, right before you start, go to Settings → "Reset All Data" so your practice taps don't count.
+
+A FEW NOTES
+- Your data saves on your phone, so always open the app from the home screen icon.
+- If I make an update, it'll show up on its own the next time you open the app.
+- If anything looks weird or doesn't work, send me a screenshot and I'll fix it.
+
+I'm proud of you for doing this. Let's go, Suzie! 🔥
+
+Love,
+Dave
+```
+
+---
+
+## Where things stand (end of Oct 31)
+
+| App | URL | Build | Storage key | Routine doc |
+|---|---|---|---|---|
+| Dave v1 (Round 1, unchanged) | /WorkOut/ | — | `wt_v3` | — |
+| Dave v2 | /WorkOut/v2/ | `2026-10-31.4` | `wt_v4` | `v2/BLUEPRINT.md` |
+| Susan | /WorkOut/susan/ | `2026-10-31.1` | `wt_susan_v1` | `susan/ROUTINE.md` |
+
+- Both programs: Sun Nov 8, 2026 → Sat May 1, 2027 (25 weeks). Dave rests Friday; Susan rests Saturday.
+- Before Nov 8: both phones → Settings → Reset All Data. Susan sets her goals.
+- Publishing rule: bump `const BUILD` in the app you change (each app has its own numbering) so phones auto-update.
+- Susan's app is a separate copy — v2 changes don't flow to it unless ported.
+- Pending: real-iPhone check of Susan's app (screenshot any issues).
